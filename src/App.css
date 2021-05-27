@@ -15,6 +15,7 @@ body{
     display:flex;
     justify-content:center;
     background:steelblue;
+    margin-bottom:15px;
 }
 .cards{
     display:flex;

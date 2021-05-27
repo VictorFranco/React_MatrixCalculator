@@ -4,6 +4,15 @@
     flex-direction:column;
     width:400px;
     height:350px;
-    box-shadow: 0 0 20px -3px;
+    box-shadow: 0 0 0 1px gray;
     margin:40px;
+    font-family: 'Arial';
+}
+.card-title{
+    color:white;
+    background:#014b88;
+    font-size:25px;
+    padding:2px;
+    display:flex;
+    justify-content:center;
 }

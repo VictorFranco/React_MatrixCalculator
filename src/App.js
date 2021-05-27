@@ -7,8 +7,8 @@ class App extends React.Component{
         return <div className="content">
             <div className="title">Login</div>
             <div className="cards">
-                <Card/>
-                <Card/>
+                <Card title="Crear Usuario"/>
+                <Card title="Iniciar Sesion"/>
             </div>
             </div>
     }
