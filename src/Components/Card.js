@@ -14,7 +14,9 @@ class Card extends React.Component{
                             name={e}
                             key={index}/>
                 })}
+                <div className="btn">
                 <button type="submit">Enviar</button>
+                </div>
             </form>
             </div>);
     }
