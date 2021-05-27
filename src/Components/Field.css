@@ -8,3 +8,8 @@
     align-items:center;
     margin-right:15px;
 }
+.field input{
+    width:240px;
+    height:25px;
+    border: 1px solid #999;
+}
