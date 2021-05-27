@@ -1,0 +1,9 @@
+.field{
+    display:flex;
+    margin:8px;
+}
+.field div{
+    flex:auto;
+    display:flex;
+    align-items:center;
+}

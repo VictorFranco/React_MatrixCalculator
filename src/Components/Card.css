@@ -3,10 +3,10 @@
     display:flex;
     flex-direction:column;
     width:400px;
-    height:350px;
     box-shadow: 0 0 0 1px gray;
     margin:40px;
     font-family: 'Arial';
+    height: max-content;
 }
 .card-title{
     color:white;
@@ -15,4 +15,7 @@
     padding:2px;
     display:flex;
     justify-content:center;
+}
+.form{
+    padding:15px;
 }
