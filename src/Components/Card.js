@@ -11,7 +11,20 @@ class Card extends React.Component{
     onSubmit(e){
         e.preventDefault()
         console.log(this.props.title)
-        console.log(this.state)
+        //console.log(this.state)
+        let dir=''
+        if(this.props.title=='Iniciar Sesion') dir='Login'
+        if(this.props.title=='Crear Usuario') dir='Create'
+        let url='http://localhost:8080/CRUD/'+dir+'?'
+        let array=[]
+        Object.entries(this.state).forEach(
+            ([key, value]) => array.push(key+"="+value)
+        );
+        url+=array.join("&")
+        console.log(url)
+        fetch(url)
+           .then(response => response.text())
+           .then(data => console.log(data))
     }
     addInfo(e){
         this.setState({
