@@ -24,7 +24,7 @@ class Card extends React.Component{
         console.log(url)
         fetch(url)
            .then(response => response.text())
-           .then(data => console.log(data))
+           .then(data => console.log(JSON.parse(data)))
     }
     addInfo(e){
         this.setState({
