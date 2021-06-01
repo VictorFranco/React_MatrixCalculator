@@ -1,0 +1,18 @@
+.field{
+    text-transform: capitalize;
+ }
+.show .btn button{
+    display:none;
+ }
+.show .cards{
+    flex-direction: column;
+}
+.show .btn{
+    align-items: center;
+}
+.show .btn .button{
+    width:50px;
+}
+.show .form{
+    pointer-events: none;
+}

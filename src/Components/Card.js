@@ -8,6 +8,8 @@ class Card extends React.Component{
         super(props)
         this.state={}
         this.props.campos.map(element=>this.setState({[element]:""}))
+        if(this.props.info!=null)
+            this.state=this.props.info
         this.setState({send:false})
     }
     onSubmit(e){
@@ -50,7 +52,7 @@ class Card extends React.Component{
                             name={element}
                             key={index}
                             addInfo={this.addInfo.bind(this)}
-                            state={this.state.element}/>
+                            state={this.state[element]}/>
                 })}
                 <div className="btn">
                 <button type="submit">Enviar</button>

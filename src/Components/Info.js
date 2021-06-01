@@ -8,6 +8,7 @@ class Info extends React.Component{
         super(props)
         this.state={}
         this.setState({create:false})
+        this.setState({show:false})
     }
     onSubmit(e){
         e.preventDefault()
@@ -16,8 +17,19 @@ class Info extends React.Component{
     onSubmit_options(e){
         e.preventDefault()
         let id=e.target[0].value
-        if(this.state.option==3)
-            this.delete_(id)
+        if(this.state.option=="1") this.show_(id)
+        if(this.state.option=="3") this.delete_(id)
+    }
+    show_(id){
+        let url="http://localhost:8080/CRUD/ShowUser?userSelected="+id
+        console.log(url)
+        fetch(url)
+           .then(response => response.text())
+           .then(data => {
+               let infomation=JSON.parse(data)
+               this.props.set_user(infomation)
+               this.setState({show:true})
+           })
     }
     delete_(id){
         let url="http://localhost:8080/CRUD/Delete?userSelected="+id
@@ -35,6 +47,8 @@ class Info extends React.Component{
     render(){
         if(this.state.create==true)
             return (<Redirect exact to="/CRUD/Create_User" />);
+        if(this.state.show==true)
+            return (<Redirect exact to="/CRUD/Show_User" />);
         return(
             <div className="contenido">
                 <div className="title">

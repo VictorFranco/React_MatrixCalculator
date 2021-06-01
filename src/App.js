@@ -3,6 +3,7 @@ import './App.css';
 import Login from './Components/Login';
 import Info from './Components/Info';
 import Create from './Components/Create';
+import Show from './Components/Show';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 class App extends React.Component {
@@ -14,6 +15,10 @@ class App extends React.Component {
         this.setState({info:inf})
         console.log(this.state.info)
     }
+    user_information(inf){
+        this.setState({user:inf})
+        console.log(this.state.user)
+    }
     render(){
         return(
             <Router>
@@ -21,10 +26,16 @@ class App extends React.Component {
                     ()=><Login set_users={this.set_users_information.bind(this)}/>
                 }/>
                 <Route exact path='/CRUD/Info/' render={
-                    ()=><Info info={this.state.info} set_users={this.set_users_information.bind(this)}/>
+                    ()=><Info
+                        info={this.state.info}
+                        set_users={this.set_users_information.bind(this)}
+                        set_user={this.user_information.bind(this)}/>
                 }/>
                 <Route exact path='/CRUD/Create_user/' render={
                     ()=><Create set_users={this.set_users_information.bind(this)}/>
+                }/>
+                <Route exact path='/CRUD/Show_user/' render={
+                    ()=><Show info={this.state.user}/>
                 }/>
             </Router>
         );
