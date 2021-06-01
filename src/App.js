@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Login from './Components/Login';
 import Info from './Components/Info';
-import Crear from './Components/Crear';
+import Create from './Components/Create';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 class App extends React.Component {
@@ -23,8 +23,8 @@ class App extends React.Component {
                 <Route exact path='/CRUD/Info/' render={
                     ()=><Info info={this.state.info}/>
                 }/>
-                <Route exact path='/CRUD/Crear/' render={
-                    ()=><Crear set_users={this.set_users_information.bind(this)}/>
+                <Route exact path='/CRUD/Create_user/' render={
+                    ()=><Create set_users={this.set_users_information.bind(this)}/>
                 }/>
             </Router>
         );

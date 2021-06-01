@@ -14,7 +14,7 @@ class Info extends React.Component{
     }
     render(){
         if(this.state.create==true)
-            return (<Redirect exact to="/CRUD/Crear" />);
+            return (<Redirect exact to="/CRUD/Create_User" />);
         return(
             <div className="contenido">
                 <div className="title">
