@@ -9,8 +9,28 @@ class Info extends React.Component{
         this.state={}
         this.setState({create:false})
     }
-    onSubmit(){
+    onSubmit(e){
+        e.preventDefault()
         this.setState({create:true})
+    }
+    onSubmit_options(e){
+        e.preventDefault()
+        let id=e.target[0].value
+        if(this.state.option==3)
+            this.delete_(id)
+    }
+    delete_(id){
+        let url="http://localhost:8080/CRUD/Delete?userSelected="+id
+        console.log(url)
+        fetch(url)
+           .then(response => response.text())
+           .then(data => {
+               let infomation=JSON.parse(data)
+               this.props.set_users(infomation)
+           })
+    }
+    onClick(e){
+        this.setState({option:e.target.value})
     }
     render(){
         if(this.state.create==true)
@@ -32,11 +52,16 @@ class Info extends React.Component{
                     return(
                         <div>
                         <div className='name'>{element.nombre}</div>
-                        <form method='post' className='table_actions' action='Options'>
+                        <form method='get' className='table_actions'
+                            onSubmit={this.onSubmit_options.bind(this)}>
+
                             <input name='id' type='text' value={element.id}/><span></span>
-                            <button name='send' value="1" type='submit' className='button'>Leer registro usuario</button>
-                            <button name='send' value="2" type='submit' className='button'>Modificar usuarios</button>
-                            <button name='send' value="3" type='submit' className='button'>Eliminar usuario</button>
+                            <button name='send' value="1" type='submit' className='button'
+                                onClick={this.onClick.bind(this)}>Leer registro usuario</button>
+                            <button name='send' value="2" type='submit' className='button'
+                                onClick={this.onClick.bind(this)}>Modificar usuarios</button>
+                            <button name='send' value="3" type='submit' className='button'
+                                onClick={this.onClick.bind(this)}>Eliminar usuario</button>
                         </form>
                         </div>
                     )})}
