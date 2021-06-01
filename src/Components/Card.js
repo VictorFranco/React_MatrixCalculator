@@ -1,12 +1,14 @@
 import React from 'react';
 import './Card.css';
 import Field from './Field.js';
+import  { Redirect } from 'react-router-dom'
 
 class Card extends React.Component{
     constructor(props){
         super(props)
         this.state={}
         this.props.campos.map(element=>this.setState({[element]:""}))
+        this.setState({send:false})
     }
     onSubmit(e){
         e.preventDefault()
@@ -24,7 +26,11 @@ class Card extends React.Component{
         console.log(url)
         fetch(url)
            .then(response => response.text())
-           .then(data => console.log(JSON.parse(data)))
+           .then(data => {
+               let infomation=JSON.parse(data)
+               this.props.set_users(infomation)
+               if(infomation!="") this.setState({send:true})
+           })
     }
     addInfo(e){
         this.setState({
@@ -32,6 +38,8 @@ class Card extends React.Component{
         })
     }
     render(){
+        if(this.state.send==true)
+            return (<Redirect to="/CRUD/Info" />);
         return(<div className="card">
             <div className="card-title">
                 {this.props.title}

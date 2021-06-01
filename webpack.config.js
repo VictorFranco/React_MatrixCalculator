@@ -20,6 +20,9 @@ module.exports = {
       template: path.resolve(__dirname, "src", "../public/index.html")
     })
   ],
+  devServer: {
+    historyApiFallback: true
+  },
   optimization: {
     splitChunks: { chunks: "all" }
   }

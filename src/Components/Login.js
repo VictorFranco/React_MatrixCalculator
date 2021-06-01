@@ -21,10 +21,12 @@ class Login extends React.Component{
                 <div className="cards">
                     <Card
                         title="Iniciar Sesion"
-                        campos={campos_iniciar}/>
+                        campos={campos_iniciar}
+                        set_users={this.props.set_users}/>
                     <Card
                         title="Crear Usuario"
-                        campos={campos_crear}/>
+                        campos={campos_crear}
+                        set_users={this.props.set_users}/>
                 </div>
                 </div>
             </div>

@@ -1,0 +1,15 @@
+body{
+    background:#CCC;
+    margin:0;
+    max-height:100vh;
+}
+.title{
+    padding:10px;
+    font-size:40px;
+    color:white;
+    display:flex;
+    justify-content:center;
+    background:steelblue;
+    margin-bottom:15px;
+    width: 100vw;
+}
