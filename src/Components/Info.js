@@ -84,7 +84,7 @@ class Info extends React.Component{
                         <form method='get' className='table_actions'
                             onSubmit={this.onSubmit_options.bind(this)}>
 
-                            <input name='id' type='text' value={element.id}/><span></span>
+                            <input name='id' type='text' value={element.id}/>
                             <button name='send' value="1" type='submit' className='button'
                                 onClick={this.onClick.bind(this)}>Leer registro usuario</button>
                             <button name='send' value="2" type='submit' className='button'
