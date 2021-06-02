@@ -4,6 +4,7 @@ import Login from './Components/Login';
 import Info from './Components/Info';
 import Create from './Components/Create';
 import Show from './Components/Show';
+import Update from './Components/Update';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 class App extends React.Component {
@@ -36,6 +37,12 @@ class App extends React.Component {
                 }/>
                 <Route exact path='/CRUD/Show_user/' render={
                     ()=><Show info={this.state.user}/>
+                }/>
+                <Route exact path='/CRUD/Update_user/' render={
+                    ()=><Update
+                        info={this.state.user}
+                        set_users={this.set_users_information.bind(this)}
+                        set_user={this.user_information.bind(this)}/>
                 }/>
             </Router>
         );

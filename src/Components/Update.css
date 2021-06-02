@@ -1,0 +1,13 @@
+.field{
+    text-transform: capitalize;
+ }
+.update .btn{
+    align-items: center;
+}
+.update .btn .button{
+    width:50px;
+}
+.cards.alinear{
+    display: flex;
+    flex-direction: column;
+}
