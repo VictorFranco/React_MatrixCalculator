@@ -4,6 +4,7 @@ import './Show.css';
 import Card from './Card.js';
 import  { Redirect,Link } from 'react-router-dom'
 
+
 class Show extends React.Component{
     constructor(props){
         super(props)

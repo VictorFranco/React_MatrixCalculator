@@ -4,6 +4,7 @@ import Login from './Components/Login';
 import Info from './Components/Info';
 import Create from './Components/Create';
 import Show from './Components/Show';
+import Matriz from './Components/Matriz';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 class App extends React.Component {
@@ -23,7 +24,9 @@ class App extends React.Component {
         return(
             <Router>
                 <Route exact path='/CRUD/' render={
-                    ()=><Login set_users={this.set_users_information.bind(this)}/>
+                    ()=> <Login set_users={this.set_users_information.bind(this)}/>
+                   
+
                 }/>
                 <Route exact path='/CRUD/Info/' render={
                     ()=><Info
@@ -35,7 +38,11 @@ class App extends React.Component {
                     ()=><Create set_users={this.set_users_information.bind(this)}/>
                 }/>
                 <Route exact path='/CRUD/Show_user/' render={
-                    ()=><Show info={this.state.user}/>
+                    ()=> <Show info={this.state.user}/>
+                   
+                }/>
+                <Route exact path='/Matriz/' render={
+                    ()=><Matriz />
                 }/>
             </Router>
         );
