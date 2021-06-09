@@ -1,58 +1,55 @@
-import React, { createElement } from 'react';
+import React, {Component} from 'react';
+import Desplegar from './Matriz';
 
+class Matriz extends Component {
 
-class Matriz extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {value: ''};
   
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
-  
-    handleChange(event) {
-      this.setState({value: event.target.value});
-    }
-  
-    handleSubmit(event) {
+   
+   
+ 
 
-        let i = 0;
-        let j = 0;
-        let celda = <input name={i}/>
-        for(i = 0; i<3; i++){
-            console.log('[]')
-            for(j = 0; j<3; j++){
-                console.log('[]')
-            }
+ onSubmit (e){
+  let array = [1,2,3,4,5,6,9,8,9]; 
+  let detsum = (array[1] * array[5] * array[9]) + (array[2] * array[6] * array[7]) + (array[4] * array[8] * array[3]) 
+  let detrest =  (array[3] * array[5] * array[7]) + (array[6] * array[8] * array[1]) + (array[2] * array[4] * array[9]) 
+        for(let i =0; i<9; i++){
+          console.log(array[i] + array[i])
         }
-        
-        
-            
-      console.log(this.state.value)
-      event.preventDefault();
-    }
+  let resp = detsum + detrest;
+  console.log(resp)
   
-    render() {
-      return (
-          <div>
-        <form onSubmit={this.handleSubmit}> 
-          <label>
-            Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Generar matriz" />
-          
-        </form>
+  console.log("Hola Himalaya")
 
-            <div id="Matriz">
+   e.preventDefault()
+ }
 
-            </div>
+ Determinante(){
+  
+}
 
-        </div>
 
-      );
-    }
+
+
+  render() {
+    return (
+      
+      <div>
+        
+      <form onSubmit={this.onSubmit}>
+        <label>
+          Name:
+          <input type="text" onChange={this.onChange} />
+        </label>
+        <input type="submit" value="Submit"  placeholder="alto"/>
+      </form>
+      <button>Inversa</button>
+      <button>Determinantes</button>
+      <button>Suma</button>
+      {this.Determinante}
+      </div>
+    );
   }
+}
 
 
 
