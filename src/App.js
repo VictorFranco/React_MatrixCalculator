@@ -6,8 +6,6 @@ import Create from './Components/Create';
 import Show from './Components/Show';
 import Matriz from './Components/Matriz';
 import Desplegar from './Components/Desplegar'
-import Formar from './Components/Formar'
-import Pruebita from './Components/Pruebita'
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 class App extends React.Component {
@@ -50,8 +48,12 @@ class App extends React.Component {
                 <Route exact path='/Desplegar/' render={
                     ()=><Desplegar />
                 }/>
-               
-                
+                <Route exact path='/CRUD/Update_user/' render={
+                    ()=><Update
+                        info={this.state.user}
+                        set_users={this.set_users_information.bind(this)}
+                        set_user={this.user_information.bind(this)}/>
+                }/>
             </Router>
         );
     }

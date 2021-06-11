@@ -9,6 +9,7 @@ class Info extends React.Component{
         this.state={}
         this.setState({create:false})
         this.setState({show:false})
+        this.setState({update:false})
     }
     onSubmit(e){
         e.preventDefault()
@@ -18,6 +19,7 @@ class Info extends React.Component{
         e.preventDefault()
         let id=e.target[0].value
         if(this.state.option=="1") this.show_(id)
+        if(this.state.option=="2") this.update_(id)
         if(this.state.option=="3") this.delete_(id)
     }
     show_(id){
@@ -29,6 +31,17 @@ class Info extends React.Component{
                let infomation=JSON.parse(data)
                this.props.set_user(infomation)
                this.setState({show:true})
+           })
+    }
+    update_(id){
+        let url="http://localhost:8080/CRUD/ShowUser?userSelected="+id
+        console.log(url)
+        fetch(url)
+           .then(response => response.text())
+           .then(data => {
+               let infomation=JSON.parse(data)
+               this.props.set_user(infomation)
+               this.setState({update:true})
            })
     }
     delete_(id){
@@ -49,6 +62,8 @@ class Info extends React.Component{
             return (<Redirect exact to="/CRUD/Create_User" />);
         if(this.state.show==true)
             return (<Redirect exact to="/CRUD/Show_User" />);
+        if(this.state.update==true)
+            return (<Redirect exact to="/CRUD/Update_User" />);
         return(
             <div className="contenido">
                 <div className="title">
@@ -69,7 +84,7 @@ class Info extends React.Component{
                         <form method='get' className='table_actions'
                             onSubmit={this.onSubmit_options.bind(this)}>
 
-                            <input name='id' type='text' value={element.id}/><span></span>
+                            <input name='id' type='text' value={element.id}/>
                             <button name='send' value="1" type='submit' className='button'
                                 onClick={this.onClick.bind(this)}>Leer registro usuario</button>
                             <button name='send' value="2" type='submit' className='button'

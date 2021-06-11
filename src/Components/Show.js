@@ -13,8 +13,10 @@ class Show extends React.Component{
             this.setState({[key]:this.props.info[key]})
     }
     render(){
-    let campos=Object.keys(this.props.info[0]).reverse()
     let information=this.props.info[0]
+    let aux=this.props.info[0]
+    delete aux["id"]
+    let campos=Object.keys(aux).reverse()
     return(
         <div className="show">
             <div className="content">

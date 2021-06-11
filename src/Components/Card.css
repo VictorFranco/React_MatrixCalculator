@@ -2,7 +2,8 @@
     background:#FFF;
     display:flex;
     flex-direction:column;
-    width:400px;
+    width:100%;
+    max-width:400px;
     box-shadow: 0 0 0 1px gray;
     margin:40px;
     font-family: 'Arial';
@@ -43,4 +44,13 @@
     cursor: pointer;
     font-weight: 1000;
     text-decoration: none;
+}
+@media only screen and (max-width: 600px) {
+  .title {
+    margin-bottom:40px;
+  }
+  .card {
+    margin:0;
+    margin-bottom:40px;
+  }
 }

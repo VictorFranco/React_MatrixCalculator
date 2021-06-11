@@ -3,13 +3,13 @@
     margin:8px;
 }
 .field div{
-    flex:auto;
+    width:80px;
     display:flex;
     align-items:center;
     margin-right:15px;
 }
 .field input{
-    width:240px;
+    flex:auto;
     height:25px;
     border: 1px solid #999;
 }
