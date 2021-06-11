@@ -1,51 +1,63 @@
 import React, {Component} from 'react';
-import Desplegar from './Matriz';
+import Desplegar from './Desplegar';
+import Formar from './Formar';
 
 class Matriz extends Component {
 
+
+  constructor(props)
+  { 
+      super(props)
+      this.state ={
+        tamano: 0
+      }
+      
+      
+  }
+
+  onSubmit(e){
+    
+    console.log(this.state.tamano)
+     e.preventDefault()
+     
+   }
+
   
+
+
    
-   
- 
-
- onSubmit (e){
-  let array = [1,2,3,4,5,6,9,8,9]; 
-  let detsum = (array[1] * array[5] * array[9]) + (array[2] * array[6] * array[7]) + (array[4] * array[8] * array[3]) 
-  let detrest =  (array[3] * array[5] * array[7]) + (array[6] * array[8] * array[1]) + (array[2] * array[4] * array[9]) 
-        for(let i =0; i<9; i++){
-          console.log(array[i] + array[i])
-        }
-  let resp = detsum + detrest;
-  console.log(resp)
-  
-  console.log("Hola Himalaya")
-
-   e.preventDefault()
- }
-
- Determinante(){
-  
+   addInfo(e){
+     console.log(this.state.tamano)
+     console.log(e.target.value)
+    this.setState({
+        [e.target.name] : e.target.value
+    })
+    return(this.state.tamano)
 }
 
+change(){
+  return(<Desplegar tamano={this.state.tamano}/>)
+}
+ 
 
-
+ 
 
   render() {
     return (
       
       <div>
         
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit.bind(this)}>
         <label>
           Name:
-          <input type="text" onChange={this.onChange} />
+          <input type="text" onChange={this.addInfo.bind(this)}  name="tamano"/>
         </label>
-        <input type="submit" value="Submit"  placeholder="alto"/>
+        <input type="submit" value="Asignar tamano"/>
       </form>
-      <button>Inversa</button>
-      <button>Determinantes</button>
+      <button >Inversa</button>
+      <button >Determinante</button>
       <button>Suma</button>
-      {this.Determinante}
+       {this.change()}
       </div>
     );
   }

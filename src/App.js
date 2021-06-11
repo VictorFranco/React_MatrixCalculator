@@ -5,6 +5,9 @@ import Info from './Components/Info';
 import Create from './Components/Create';
 import Show from './Components/Show';
 import Matriz from './Components/Matriz';
+import Desplegar from './Components/Desplegar'
+import Formar from './Components/Formar'
+import Pruebita from './Components/Pruebita'
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 class App extends React.Component {
@@ -44,6 +47,11 @@ class App extends React.Component {
                 <Route exact path='/Matriz/' render={
                     ()=><Matriz />
                 }/>
+                <Route exact path='/Desplegar/' render={
+                    ()=><Desplegar />
+                }/>
+               
+                
             </Router>
         );
     }
