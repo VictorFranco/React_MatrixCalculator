@@ -1,16 +1,19 @@
 import React from 'react';
 import './Login.css';
 import './Create.css';
-import Card from './Card';
+import Matrix from './Matrix';
 
 class Crear extends React.Component{
     constructor(props){
         super(props)
-        this.state={orden : "3"}
+        this.state={orden : "3",matrix:[]}
     }
     onChange(e){
         let value=e.target.value
         this.setState({orden : value})
+    }
+    addElement(e){
+        console.log(e.target.name);
     }
     render(){
         let orden=this.state.orden
@@ -24,9 +27,14 @@ class Crear extends React.Component{
             alignContent: "center",
             placeItems: "center"
         }
-        for(let i=0;i<orden;i++)
+        let m1=[]
+        for(let i=0;i<orden;i++){
+            let row=[]
             for(let j=0;j<orden;j++)
-                items.push(<div><input type='text'/></div>);
+                row.push(0)
+            m1.push(row)
+        }
+        console.log(m1)
         return(
             <div>
                 <div className="content">
@@ -42,8 +50,8 @@ class Crear extends React.Component{
                                 value={orden} type="text"/>
                         </div>
                         <form method="post" className="form matrix">
-                            <div className="matriz" style={style_}>
-                                {items}
+                            <div>
+                                <Matrix content={m1} addElement={this.addElement.bind(this)}/>
                             </div>
                             <div className="btn">
                                 <button type="submit">Resolver</button>
