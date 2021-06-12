@@ -80,7 +80,7 @@ class Info extends React.Component{
                 {this.props.info.map(element=>{
                     return(
                         <div>
-                        <div className='name'>{element.nombre}</div>
+                        <div className='name'>{element.ID}</div>
                         <form method='get' className='table_actions'
                             onSubmit={this.onSubmit_options.bind(this)}>
 
