@@ -67,10 +67,10 @@ class Info extends React.Component{
         return(
             <div className="contenido">
                 <div className="title">
-                    CREAR, ALTAS, BAJAS Y CAMBIOS
+                    CREAR, ALTAS, BAJAS Y CAMBIOS DE EJERCICIOS
                 </div>
                 <form method='get'onSubmit={this.onSubmit.bind(this)}>
-                    <button className='crear' type='submit'>Crear usuarios</button>
+                    <button className='crear' type='submit'>Crear nuevo ejecicio</button>
                 </form>
                 <div className='table'>
             <div className='table_header'>
@@ -86,11 +86,13 @@ class Info extends React.Component{
 
                             <input name='id' type='text' value={element.id}/>
                             <button name='send' value="1" type='submit' className='button'
-                                onClick={this.onClick.bind(this)}>Leer registro usuario</button>
+                                onClick={this.onClick.bind(this)}>Ver ejercicio</button>
                             <button name='send' value="2" type='submit' className='button'
-                                onClick={this.onClick.bind(this)}>Modificar usuarios</button>
+                                onClick={this.onClick.bind(this)}>Modificar ejercicio</button>
                             <button name='send' value="3" type='submit' className='button'
-                                onClick={this.onClick.bind(this)}>Eliminar usuario</button>
+                                onClick={this.onClick.bind(this)}>Eliminar ejercicio</button>
+                            <button name='send' value="3" type='submit' className='button'
+                                onClick={this.onClick.bind(this)}>Probar ejercicio</button>
                         </form>
                         </div>
                     )})}
