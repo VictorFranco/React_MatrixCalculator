@@ -1,0 +1,12 @@
+CREATE DATABASE Usuarios;
+
+use Usuarios;
+
+CREATE TABLE Usuario(idUsuario INT NOT NULL AUTO_INCREMENT, ID VARCHAR(10) NOT NULL, password VARCHAR(20) NOT NULL,
+                     PRIMARY KEY(idUsuario));
+
+GRANT ALL ON Usuarios.* TO admin@localhost IDENTIFIED BY '1234';
+
+INSERT INTO Usuario (ID,password) VALUES ('admin','1234');
+
+SELECT * FROM Usuario;
