@@ -8,10 +8,11 @@
 .asignar{
     display: flex;
     justify-content: center;
-    margin: 20px; 
+    align-items: center;
+    margin: 20px;
 }
 .matrix{
-    align-items: center;
     display: flex;
+    align-items: center;
     flex-direction: column;
 }
