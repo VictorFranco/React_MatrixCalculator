@@ -8,6 +8,10 @@ flex-direction: column;
 align-items: center;
 font-family: 'Arial';
 }
+.saludo{
+margin-bottom: 10px;
+font-weight: bold;
+}
 .table{
 display:grid;
 width:100vw;

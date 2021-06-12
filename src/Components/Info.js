@@ -59,7 +59,7 @@ class Info extends React.Component{
     }
     render(){
         if(this.state.create==true)
-            return (<Redirect exact to="/CRUD/Create_User" />);
+            return (<Redirect exact to="/CRUD/Create_ejercicio" />);
         if(this.state.show==true)
             return (<Redirect exact to="/CRUD/Show_User" />);
         if(this.state.update==true)
@@ -69,6 +69,7 @@ class Info extends React.Component{
                 <div className="title">
                     CREAR, ALTAS, BAJAS Y CAMBIOS DE EJERCICIOS
                 </div>
+                <div className="saludo">Bienvenido: {this.props.info[0].ID}</div>
                 <form method='get'onSubmit={this.onSubmit.bind(this)}>
                     <button className='crear' type='submit'>Crear nuevo ejecicio</button>
                 </form>

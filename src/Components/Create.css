@@ -1,0 +1,17 @@
+.matriz{
+    display: grid;
+}
+.matriz input{
+    width: 20px;
+    height: 20px;
+}
+.asignar{
+    display: flex;
+    justify-content: center;
+    margin: 20px; 
+}
+.matrix{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
