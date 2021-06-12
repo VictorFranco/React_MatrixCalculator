@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Desplegar from './Desplegar';
-import Formar from './Formar';
+//import Formar from './Formar';
 
 class Matriz extends Component {
 
