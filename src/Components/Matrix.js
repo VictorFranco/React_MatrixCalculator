@@ -30,7 +30,7 @@ class Matrix extends React.Component{
             for(let j=0;j<size;j++)
                 inputs.push(
                     <Cell x={j} y={i}
-                        value={this.props.content[j][i]}
+                        value={this.props.content[i][j]}
                         addElement={this.props.addElement}/>
                 )
         return(
