@@ -23,6 +23,7 @@
 .btn{
     display:flex;
     justify-content:center;
+    flex-wrap: wrap;
 }
 .btn button{
     background: black;
@@ -33,6 +34,8 @@
     margin-top: 10px;
     cursor: pointer;
     font-weight: 1000;
+    width: 110px;
+    margin: 5px 10px;
 }
 .btn .button{
     background: black;

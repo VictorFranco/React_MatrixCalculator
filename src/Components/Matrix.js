@@ -21,10 +21,11 @@ class Matrix extends React.Component{
         let inputs=[]
         let style_={
             width:40*size+"px",
-            gridAutoRows: "40px",
+            gridAutoRows:"40px",
             gridTemplateColumns:"repeat("+size+",1fr)",
-            alignContent: "center",
-            placeItems: "center"
+            alignContent:"center",
+            placeItems:"center",
+            marginBottom:"20px"
         }
         for(let i=0;i<size;i++)
             for(let j=0;j<size;j++)

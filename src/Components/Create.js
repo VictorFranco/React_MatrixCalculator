@@ -35,14 +35,6 @@ class Crear extends React.Component{
         orden=isNaN(orden)?3:orden
         orden=orden>8?8:orden
         let items=[]
-        let style_={
-            width:40*orden+"px",
-            gridAutoRows:"40px",
-            gridTemplateColumns:"repeat("+orden+",1fr)",
-            alignContent:"center",
-            placeItems:"center",
-            marginBottom:"10px"
-        }
         let m1=[]
         for(let i=0;i<orden;i++){
             let row=[]
@@ -69,8 +61,11 @@ class Crear extends React.Component{
                                 <div>
                                     <Matrix content={m1} addElement={this.addElement.bind(this)}/>
                                 </div>
-                                <div className="btn">
+                                <div style={{flexWrap:"wrap"}} className="btn">
                                     <button type="submit">Transpuesta</button>
+                                    <button type="submit">Determinante</button>
+                                    <button type="submit">Inversa</button>
+                                    <button type="submit">Adjunta</button>
                                 </div>
                             </form>
                         </div>
