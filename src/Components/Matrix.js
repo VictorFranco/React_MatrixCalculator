@@ -4,6 +4,18 @@ import './Create.css';
 import Cell from './Cell';
 
 class Matrix extends React.Component{
+    //Matriz traspuesta
+    transpose(A){
+        let size=A.length
+        let i, j;
+        let B=Array(parseInt(size)).fill().map(
+            ()=>Array(parseInt(size)).fill(0)
+        )
+        for (i = 0; i < size; i++)
+            for (j = 0; j < size; j++)
+                B[i][j] = A[j][i];
+        return B
+    }
     render(){
         let size=this.props.content.length
         let inputs=[]

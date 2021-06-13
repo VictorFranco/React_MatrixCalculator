@@ -10,11 +10,11 @@ class Crear extends React.Component{
     }
     onChange(e){
         let value=e.target.value
-        let new_value=value+this.state.orden
+        let new_value=value||this.state.orden
         this.setState({orden : value})
-        let m1=[]
-        for(let i=0;i<new_value;i++)
-            m1.push(new Array(parseInt(new_value)).fill(0));
+        let m1=new Array(parseInt(new_value)).fill().map(
+            ()=>new Array(parseInt(new_value)).fill(0)
+        )
         this.setState({matrix:m1})
     }
     addElement(e,x,y){
