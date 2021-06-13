@@ -6,14 +6,16 @@ import Matrix from './Matrix';
 class Crear extends React.Component{
     constructor(props){
         super(props)
-        this.state={orden : "3",matrix:[]}
+        this.state={orden : "3",matrix:[[1,2,3],[1,2,3],[1,2,3]]}
     }
     onChange(e){
         let value=e.target.value
         this.setState({orden : value})
     }
-    addElement(e){
-        console.log(e.target.name);
+    addElement(e,x,y){
+        let m1=this.state.matrix;
+        m1[x][y]=e.target.value
+        console.log(m1)
     }
     render(){
         let orden=this.state.orden
@@ -31,10 +33,9 @@ class Crear extends React.Component{
         for(let i=0;i<orden;i++){
             let row=[]
             for(let j=0;j<orden;j++)
-                row.push(0)
+                row.push(this.state.matrix[j][i])
             m1.push(row)
         }
-        console.log(m1)
         return(
             <div>
                 <div className="content">

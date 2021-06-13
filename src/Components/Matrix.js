@@ -1,12 +1,9 @@
 import React from 'react';
 import './Login.css';
 import './Create.css';
-import Card from './Card';
+import Cell from './Cell';
 
 class Matrix extends React.Component{
-    onChange(e){
-        this.props.addElement(e)
-    }
     render(){
         let size=this.props.content.length
         let inputs=[]
@@ -20,10 +17,9 @@ class Matrix extends React.Component{
         for(let i=0;i<size;i++)
             for(let j=0;j<size;j++)
                 inputs.push(
-                    <input type='text'
-                        onChange={this.onChange.bind(this)}
+                    <Cell x={j} y={i}
                         value={this.props.content[i][j]}
-                        name={j+","+i}/>
+                        addElement={this.props.addElement}/>
                 )
         return(
             <div className="matriz" style={style_}>
