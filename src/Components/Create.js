@@ -10,6 +10,9 @@ class Crear extends React.Component{
     }
     onSubmit(e){
         e.preventDefault()
+        if(this.state.option=="1") this.transpose()
+    }
+    transpose(){
         let new_matrix=new Matrix()
         let result=new_matrix.transpose(this.state.matrix)
         console.log(result)
@@ -29,6 +32,9 @@ class Crear extends React.Component{
         m1[y][x]=e.target.value
         console.log(m1)
         this.setState({matrix:m1})
+    }
+    onClick(e){
+        this.setState({option:e.target.value})
     }
     render(){
         let orden=this.state.orden
@@ -62,10 +68,14 @@ class Crear extends React.Component{
                                     <Matrix content={m1} addElement={this.addElement.bind(this)}/>
                                 </div>
                                 <div style={{flexWrap:"wrap"}} className="btn">
-                                    <button type="submit">Transpuesta</button>
-                                    <button type="submit">Determinante</button>
-                                    <button type="submit">Inversa</button>
-                                    <button type="submit">Adjunta</button>
+                                    <button value="1" type="submit" onClick={this.onClick.bind(this)}>
+                                        Transpuesta</button>
+                                    <button value="2" type="submit" onClick={this.onClick.bind(this)}>
+                                        Determinante</button>
+                                    <button value="3" type="submit" onClick={this.onClick.bind(this)}>
+                                        Inversa</button>
+                                    <button value="4" type="submit" onClick={this.onClick.bind(this)}>
+                                        Adjunta</button>
                                 </div>
                             </form>
                         </div>

@@ -37,6 +37,9 @@
     width: 110px;
     margin: 5px 10px;
 }
+button:active {
+    background: #333;
+}
 .btn .button{
     background: black;
     color: white;
