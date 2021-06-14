@@ -27,8 +27,7 @@ class Update extends React.Component{
                     title="Informacion"
                     campos={campos}
                     id_={id}
-                    info={information}
-                    set_users={this.props.set_users}/>
+                    info={information}/>
                 <div className="btn">
                     <Link className="button" to="/CRUD/Info">Return</Link>
                 </div>

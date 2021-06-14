@@ -29,7 +29,7 @@ class Info extends React.Component{
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
-               this.props.set_user(infomation)
+               this.props.user_info(infomation)
                this.setState({show:true})
            })
     }
@@ -40,7 +40,7 @@ class Info extends React.Component{
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
-               this.props.set_user(infomation)
+               this.props.user_info(infomation)
                this.setState({update:true})
            })
     }
@@ -51,7 +51,6 @@ class Info extends React.Component{
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
-               this.props.set_users(infomation)
            })
     }
     onClick(e){
@@ -59,7 +58,7 @@ class Info extends React.Component{
     }
     render(){
         if(this.state.create==true)
-            return (<Redirect exact to="/CRUD/Create_ejercicio" />);
+            return (<Redirect exact to="/CRUD/Create_Exercise" />);
         if(this.state.show==true)
             return (<Redirect exact to="/CRUD/Show_User" />);
         if(this.state.update==true)
@@ -69,7 +68,7 @@ class Info extends React.Component{
                 <div className="title">
                     CREAR, ALTAS, BAJAS Y CAMBIOS DE EJERCICIOS
                 </div>
-                <div className="saludo">Bienvenido: {this.props.info[0].ID}</div>
+                <div className="saludo">Bienvenido: {this.props.user[0].ID}</div>
                 <form method='get'onSubmit={this.onSubmit.bind(this)}>
                     <button className='crear' type='submit'>Crear nuevo ejecicio</button>
                 </form>
@@ -78,14 +77,14 @@ class Info extends React.Component{
                 <div className='table_header1'>Usuario</div>
                 <div className='table_header2'>Acciones</div>
             </div>
-                {this.props.info.map(element=>{
+                {this.props.user[1].map((element,index)=>{
                     return(
                         <div>
-                        <div className='name'>{element.ID}</div>
+                        <div className='name'>{"Ejercicio "+(index+1)}</div>
                         <form method='get' className='table_actions'
                             onSubmit={this.onSubmit_options.bind(this)}>
 
-                            <input name='id' type='text' value={element.id}/>
+                            <input name='id' type='text' value={element.idEjercicio}/>
                             <button name='send' value="1" type='submit' className='button'
                                 onClick={this.onClick.bind(this)}>Ver ejercicio</button>
                             <button name='send' value="2" type='submit' className='button'

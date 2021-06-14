@@ -13,11 +13,7 @@ class App extends React.Component {
         super(props)
         this.state={}
     }
-    set_users_information(inf){
-        this.setState({info:inf})
-        console.log(this.state.info)
-    }
-    user_information(inf){
+    set_user_info(inf){
         this.setState({user:inf})
         console.log(this.state.user)
     }
@@ -25,22 +21,18 @@ class App extends React.Component {
         return(
             <Router>
                 <Route exact path='/CRUD/' render={
-                    ()=> <Login set_users={this.set_users_information.bind(this)}/>
-                   
-
+                    ()=> <Login set_user_info={this.set_user_info.bind(this)}/>
                 }/>
                 <Route exact path='/CRUD/Info/' render={
                     ()=><Info
-                        info={this.state.info}
-                        set_users={this.set_users_information.bind(this)}
-                        set_user={this.user_information.bind(this)}/>
+                        user={this.state.user}
+                        user_info={this.set_user_info.bind(this)}/>
                 }/>
-                <Route exact path='/CRUD/Create_ejercicio/' render={
-                    ()=><Create set_users={this.set_users_information.bind(this)}/>
+                <Route exact path='/CRUD/Create_Exercise/' render={
+                    ()=><Create user={this.state.user}/>
                 }/>
                 <Route exact path='/CRUD/Show_user/' render={
-                    ()=> <Show info={this.state.user}/>
-                   
+                    ()=><Show info={this.state.user} />
                 }/>
                 <Route exact path='/Matriz/' render={
                     ()=><Matriz />
@@ -51,8 +43,7 @@ class App extends React.Component {
                 <Route exact path='/CRUD/Update_user/' render={
                     ()=><Update
                         info={this.state.user}
-                        set_users={this.set_users_information.bind(this)}
-                        set_user={this.user_information.bind(this)}/>
+                        set_user={this.set_user_info.bind(this)}/>
                 }/>
             </Router>
         );

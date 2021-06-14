@@ -6,7 +6,27 @@ import Matrix from './Matrix';
 class Crear extends React.Component{
     constructor(props){
         super(props)
-        this.state={orden : "3",matrix:[[0,0,0],[0,0,0],[0,0,0]],result:[0]}
+        this.state={orden : "3",option:"0",matrix:[[0,0,0],[0,0,0],[0,0,0]],result:""}
+    }
+    save(e){
+        e.preventDefault()
+        console.log(this.props.title)
+        //console.log(this.state)
+        let info={
+            option:this.state.option,
+            matrix:this.state.matrix,
+            result:this.state.result
+        }
+        let url='http://localhost:8080/CRUD/Create?'
+            url+=`id=${this.props.user[0].id}&`
+            url+=`JSON=${JSON.stringify(info)}`
+        console.log(url)
+        fetch(url)
+           .then(response => response.text())
+           .then(data => {
+               let infomation=JSON.parse(data)
+               console.log(infomation)
+           })
     }
     onSubmit(e){
         e.preventDefault()
@@ -86,7 +106,7 @@ class Crear extends React.Component{
                             <div className="asignar">
                                 <div>Transpuesta</div>
                             </div>
-                            <form method="get" className="form matrix">
+                            <form onSubmit={this.save.bind(this)} method="get" className="form matrix">
                                 <div style={{pointerEvents:"none"}}>
                                     <Matrix content={this.state.result} addElement={this.addElement.bind(this)}/>
                                 </div>

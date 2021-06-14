@@ -18,8 +18,6 @@ class Card extends React.Component{
         //console.log(this.state)
         let dir=''
         if(this.props.title=='Iniciar Sesion') dir='Login'
-        if(this.props.title=='Crear Usuario') dir='Create'
-        if(this.props.title=='Informacion') dir='Update'
         let url='http://localhost:8080/CRUD/'+dir+'?'
         let array=[]
         Object.entries(this.state).forEach(
@@ -32,7 +30,7 @@ class Card extends React.Component{
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
-               this.props.set_users(infomation)
+               this.props.set_user_info(infomation)
                if(infomation!="") this.setState({send:true})
            })
     }
