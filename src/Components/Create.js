@@ -36,10 +36,31 @@ class Create extends React.Component{
     onSubmit(e){
         e.preventDefault()
         if(this.state.option=="1") this.transpose()
+        if(this.state.option=="2") this.determinante()
+        if(this.state.option=="3") this.inversa()
+        if(this.state.option=="4") this.adjunta()
     }
     transpose(){
         let new_matrix=new Matrix()
         let result=new_matrix.transpose(this.state.matrix)
+        console.log(result)
+        this.setState({result:result})
+    }
+    determinante(){
+        let new_matrix=new Matrix()
+        let result=new_matrix.Determiner(this.state.matrix,this.state.matrix.length)
+        console.log(result,this.state.matrix,this.state.matrix.length)
+        this.setState({result:[[result]]})
+    }
+    inversa(){
+        let new_matrix=new Matrix()
+        let result=new_matrix.Inversa(this.state.matrix,this.state.matrix.length)
+        console.log(result)
+        this.setState({result:result})
+    }
+    adjunta(){
+        let new_matrix=new Matrix()
+        let result=new_matrix.Adjunta(this.state.matrix,this.state.matrix.length)
         console.log(result)
         this.setState({result:result})
     }
