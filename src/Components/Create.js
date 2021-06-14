@@ -2,7 +2,7 @@ import React from 'react';
 import './Login.css';
 import './Create.css';
 import Matrix from './Matrix';
-import  { Redirect } from 'react-router-dom'
+import  { Redirect,Link } from 'react-router-dom'
 
 class Create extends React.Component{
     constructor(props){
@@ -74,6 +74,9 @@ class Create extends React.Component{
             <div>
                 <div className="content">
                 <div className="title">Crear</div>
+                    <div className="btn">
+                        <Link className="button" to="/CRUD/Info">Return</Link>
+                    </div>
                     <div className="cards">
                         <div className="card">
                             <div className="card-title">

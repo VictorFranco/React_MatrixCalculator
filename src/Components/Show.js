@@ -26,6 +26,9 @@ class Show extends React.Component{
             <div>
                 <div className="content">
                 <div className="title">Consultar</div>
+                    <div className="btn">
+                        <Link className="button" to="/CRUD/Info">Return</Link>
+                    </div>
                     <div className="cards">
                         <div className="card">
                             <div className="card-title">
@@ -34,9 +37,6 @@ class Show extends React.Component{
                             <form method="get" className="form matrix">
                                 <div>
                                     <Matrix content={m1} addElement={this.addElement.bind(this)}/>
-                                </div>
-                                <div className="btn">
-                                    <Link className="button" to="/CRUD/Info">Return</Link>
                                 </div>
                             </form>
                         </div>

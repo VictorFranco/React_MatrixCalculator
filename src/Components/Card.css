@@ -37,7 +37,7 @@
     width: 110px;
     margin: 5px 10px;
 }
-button:active {
+.btn button:active {
     background: #333;
 }
 .btn .button{
@@ -55,5 +55,9 @@ button:active {
   .card {
     margin:0;
     margin-bottom:40px;
+  }
+  .btn a{
+    margin:0;
+    margin-bottom:15px;
   }
 }
