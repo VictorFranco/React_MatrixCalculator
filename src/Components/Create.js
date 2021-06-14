@@ -25,7 +25,6 @@ class Crear extends React.Component{
             result:this.state.result
         }
         let url='http://localhost:8080/CRUD/Create?'
-            url+=`id=${this.props.user[0].id}&`
             url+=`JSON=${JSON.stringify(info)}`
         console.log(url)
         fetch(url)

@@ -24,18 +24,18 @@ class App extends React.Component {
         return(
             <Router>
                 <Route exact path='/CRUD/' render={
-                    ()=> <Login set_user_info={this.set_user_info.bind(this)}/>
+                    ()=> <Login
+                        set_user_info={this.set_user_info.bind(this)} />
                 }/>
                 <Route exact path='/CRUD/Info/' render={
                     ()=><Info
                         user={this.state.user}
                         set_excercise={this.set_excercise.bind(this)}
-                        set_user_info={this.set_user_info.bind(this)}/>
+                        set_user_info={this.set_user_info.bind(this)} />
                 }/>
                 <Route exact path='/CRUD/Create_Exercise/' render={
                     ()=><Create
-                        set_user_info={this.set_user_info.bind(this)}
-                        user={this.state.user}/>
+                        set_user_info={this.set_user_info.bind(this)} />
                 }/>
                 <Route exact path='/CRUD/Show_Exercise/' render={
                     ()=><Show
@@ -51,7 +51,7 @@ class App extends React.Component {
                 <Route exact path='/CRUD/Update_user/' render={
                     ()=><Update
                         info={this.state.user}
-                        set_user={this.set_user_info.bind(this)}/>
+                        set_user={this.set_user_info.bind(this)} />
                 }/>
             </Router>
         );
