@@ -2,11 +2,18 @@ import React from 'react';
 import './Login.css';
 import './Create.css';
 import Matrix from './Matrix';
+import  { Redirect } from 'react-router-dom'
 
 class Crear extends React.Component{
     constructor(props){
         super(props)
-        this.state={orden : "3",option:"0",matrix:[[0,0,0],[0,0,0],[0,0,0]],result:""}
+        this.state={
+            orden : "3",
+            option:"0",
+            matrix:[[0,0,0],[0,0,0],[0,0,0]],
+            result:"",
+            update:false
+        }
     }
     save(e){
         e.preventDefault()
@@ -25,7 +32,8 @@ class Crear extends React.Component{
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
-               console.log(infomation)
+               this.props.set_user_info(infomation)
+               this.setState({update:true})
            })
     }
     onSubmit(e){
@@ -68,6 +76,8 @@ class Crear extends React.Component{
                 row.push(this.state.matrix[i][j])
             m1.push(row)
         }
+        if(this.state.update==true)
+            return (<Redirect exact to="/CRUD/Info" />);
         return(
             <div>
                 <div className="content">
