@@ -22,7 +22,6 @@ class Show extends React.Component{
                 json_=JSON.parse(exercise.JSON)
         let m1=json_.matrix
         let m2=json_.result
-        console.log(json_)
         return(
             <div>
                 <div className="content">

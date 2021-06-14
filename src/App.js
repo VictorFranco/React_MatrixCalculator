@@ -4,8 +4,9 @@ import Login from './Components/Login';
 import Info from './Components/Info';
 import Create from './Components/Create';
 import Show from './Components/Show';
+import Update from './Components/Update';
 import Matriz from './Components/Matriz';
-import Desplegar from './Components/Desplegar'
+import Desplegar from './Components/Desplegar';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 class App extends React.Component {
@@ -48,10 +49,10 @@ class App extends React.Component {
                 <Route exact path='/Desplegar/' render={
                     ()=><Desplegar />
                 }/>
-                <Route exact path='/CRUD/Update_user/' render={
+                <Route exact path='/CRUD/Update_Exercise/' render={
                     ()=><Update
-                        info={this.state.user}
-                        set_user={this.set_user_info.bind(this)} />
+                        num_excercise={this.state.num_excercise}
+                        set_user_info={this.set_user_info.bind(this)} />
                 }/>
             </Router>
         );

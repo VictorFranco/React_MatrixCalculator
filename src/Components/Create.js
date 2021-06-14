@@ -4,7 +4,7 @@ import './Create.css';
 import Matrix from './Matrix';
 import  { Redirect } from 'react-router-dom'
 
-class Crear extends React.Component{
+class Create extends React.Component{
     constructor(props){
         super(props)
         this.state={
@@ -68,13 +68,6 @@ class Crear extends React.Component{
         orden=isNaN(orden)?3:orden
         orden=orden>8?8:orden
         let items=[]
-        let m1=[]
-        for(let i=0;i<orden;i++){
-            let row=[]
-            for(let j=0;j<orden;j++)
-                row.push(this.state.matrix[i][j])
-            m1.push(row)
-        }
         if(this.state.update==true)
             return (<Redirect exact to="/CRUD/Info" />);
         return(
@@ -94,7 +87,7 @@ class Crear extends React.Component{
                             </div>
                             <form onSubmit={this.onSubmit.bind(this)} method="get" className="form matrix">
                                 <div>
-                                    <Matrix content={m1} addElement={this.addElement.bind(this)}/>
+                                    <Matrix content={this.state.matrix} addElement={this.addElement.bind(this)}/>
                                 </div>
                                 <div style={{flexWrap:"wrap"}} className="btn">
                                     <button value="1" type="submit" onClick={this.onClick.bind(this)}>
@@ -131,4 +124,4 @@ class Crear extends React.Component{
     }
 }
 
-export default Crear;
+export default Create;

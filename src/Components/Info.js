@@ -29,18 +29,20 @@ class Info extends React.Component{
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
+               this.props.set_user_info(infomation)
                this.props.set_excercise(id)
                this.setState({show:true})
            })
     }
     update_(id){
-        let url="http://localhost:8080/CRUD/ShowUser?userSelected="+id
+        let url="http://localhost:8080/CRUD/ShowInfo"
         console.log(url)
         fetch(url)
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
                this.props.set_user_info(infomation)
+               this.props.set_excercise(id)
                this.setState({update:true})
            })
     }
@@ -63,7 +65,7 @@ class Info extends React.Component{
         if(this.state.show==true)
             return (<Redirect exact to="/CRUD/Show_Exercise" />);
         if(this.state.update==true)
-            return (<Redirect exact to="/CRUD/Update_User" />);
+            return (<Redirect exact to="/CRUD/Update_Exercise" />);
         return(
             <div className="contenido">
                 <div className="title">
