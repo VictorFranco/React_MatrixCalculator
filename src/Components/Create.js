@@ -2,11 +2,36 @@ import React from 'react';
 import './Login.css';
 import './Create.css';
 import Matrix from './Matrix';
+import  { Redirect,Link } from 'react-router-dom'
 
-class Crear extends React.Component{
+class Create extends React.Component{
     constructor(props){
         super(props)
-        this.state={orden : "3",matrix:[[0,0,0],[0,0,0],[0,0,0]],result:[0]}
+        this.state={
+            orden:"3",
+            option:"0",
+            matrix:[[0,0,0],[0,0,0],[0,0,0]],
+            result:"",
+            update:false
+        }
+    }
+    save(e){
+        e.preventDefault()
+        let info={
+            option:this.state.option,
+            matrix:this.state.matrix,
+            result:this.state.result
+        }
+        let url='http://localhost:8080/CRUD/Create?'
+            url+=`JSON=${JSON.stringify(info)}`
+        console.log(url)
+        fetch(url)
+           .then(response => response.text())
+           .then(data => {
+               let infomation=JSON.parse(data)
+               this.props.set_user_info(infomation)
+               this.setState({update:true})
+           })
     }
     onSubmit(e){
         e.preventDefault()
@@ -40,18 +65,22 @@ class Crear extends React.Component{
         let orden=this.state.orden
         orden=isNaN(orden)?3:orden
         orden=orden>8?8:orden
-        let items=[]
-        let m1=[]
-        for(let i=0;i<orden;i++){
-            let row=[]
-            for(let j=0;j<orden;j++)
-                row.push(this.state.matrix[i][j])
-            m1.push(row)
+        let title=""
+        switch (this.state.option) {
+            case "1": title="Transpuesta"; break;
+            case "2": title="Determinante"; break;
+            case "3": title="Inversa"; break;
+            case "4": title="Adjunta"; break;
         }
+        if(this.state.update==true)
+            return (<Redirect exact to="/CRUD/Info" />);
         return(
             <div>
                 <div className="content">
                 <div className="title">Crear</div>
+                    <div className="btn">
+                        <Link className="button" to="/CRUD/Info">Return</Link>
+                    </div>
                     <div className="cards">
                         <div className="card">
                             <div className="card-title">
@@ -65,7 +94,7 @@ class Crear extends React.Component{
                             </div>
                             <form onSubmit={this.onSubmit.bind(this)} method="get" className="form matrix">
                                 <div>
-                                    <Matrix content={m1} addElement={this.addElement.bind(this)}/>
+                                    <Matrix content={this.state.matrix} addElement={this.addElement.bind(this)}/>
                                 </div>
                                 <div style={{flexWrap:"wrap"}} className="btn">
                                     <button value="1" type="submit" onClick={this.onClick.bind(this)}>
@@ -84,9 +113,9 @@ class Crear extends React.Component{
                                 Resultado
                             </div>
                             <div className="asignar">
-                                <div>Transpuesta</div>
+                                <div>{title}</div>
                             </div>
-                            <form method="get" className="form matrix">
+                            <form onSubmit={this.save.bind(this)} method="get" className="form matrix">
                                 <div style={{pointerEvents:"none"}}>
                                     <Matrix content={this.state.result} addElement={this.addElement.bind(this)}/>
                                 </div>
@@ -102,4 +131,4 @@ class Crear extends React.Component{
     }
 }
 
-export default Crear;
+export default Create;
