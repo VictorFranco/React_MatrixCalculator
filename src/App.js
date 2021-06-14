@@ -26,7 +26,7 @@ class App extends React.Component {
                 <Route exact path='/CRUD/Info/' render={
                     ()=><Info
                         user={this.state.user}
-                        user_info={this.set_user_info.bind(this)}/>
+                        set_user_info={this.set_user_info.bind(this)}/>
                 }/>
                 <Route exact path='/CRUD/Create_Exercise/' render={
                     ()=><Create

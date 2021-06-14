@@ -29,7 +29,7 @@ class Info extends React.Component{
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
-               this.props.user_info(infomation)
+               this.props.set_user_info(infomation)
                this.setState({show:true})
            })
     }
@@ -40,17 +40,18 @@ class Info extends React.Component{
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
-               this.props.user_info(infomation)
+               this.props.set_user_info(infomation)
                this.setState({update:true})
            })
     }
     delete_(id){
-        let url="http://localhost:8080/CRUD/Delete?userSelected="+id
+        let url="http://localhost:8080/CRUD/Delete?exercise="+id
         console.log(url)
         fetch(url)
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
+               this.props.set_user_info(infomation)
            })
     }
     onClick(e){
