@@ -17,6 +17,9 @@ class App extends React.Component {
         this.setState({user:inf})
         console.log(this.state.user)
     }
+    set_excercise(num){
+        this.setState({num_excercise:num})
+    }
     render(){
         return(
             <Router>
@@ -26,6 +29,7 @@ class App extends React.Component {
                 <Route exact path='/CRUD/Info/' render={
                     ()=><Info
                         user={this.state.user}
+                        set_excercise={this.set_excercise.bind(this)}
                         set_user_info={this.set_user_info.bind(this)}/>
                 }/>
                 <Route exact path='/CRUD/Create_Exercise/' render={
@@ -33,8 +37,10 @@ class App extends React.Component {
                         set_user_info={this.set_user_info.bind(this)}
                         user={this.state.user}/>
                 }/>
-                <Route exact path='/CRUD/Show_user/' render={
-                    ()=><Show info={this.state.user} />
+                <Route exact path='/CRUD/Show_Exercise/' render={
+                    ()=><Show
+                        num_excercise={this.state.num_excercise}
+                        user={this.state.user} />
                 }/>
                 <Route exact path='/Matriz/' render={
                     ()=><Matriz />

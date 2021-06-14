@@ -23,13 +23,13 @@ class Info extends React.Component{
         if(this.state.option=="3") this.delete_(id)
     }
     show_(id){
-        let url="http://localhost:8080/CRUD/ShowUser?userSelected="+id
+        let url="http://localhost:8080/CRUD/ShowInfo"
         console.log(url)
         fetch(url)
            .then(response => response.text())
            .then(data => {
                let infomation=JSON.parse(data)
-               this.props.set_user_info(infomation)
+               this.props.set_excercise(id)
                this.setState({show:true})
            })
     }
@@ -61,7 +61,7 @@ class Info extends React.Component{
         if(this.state.create==true)
             return (<Redirect exact to="/CRUD/Create_Exercise" />);
         if(this.state.show==true)
-            return (<Redirect exact to="/CRUD/Show_User" />);
+            return (<Redirect exact to="/CRUD/Show_Exercise" />);
         if(this.state.update==true)
             return (<Redirect exact to="/CRUD/Update_User" />);
         return(

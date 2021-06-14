@@ -24,14 +24,13 @@ class Card extends React.Component{
             ([key, value]) => array.push(key+"="+value)
         );
         url+=array.join("&")
-        if(this.props.title=='Informacion') url+="&userSelected="+this.props.id_
         console.log(url)
         fetch(url)
            .then(response => response.text())
            .then(data => {
-               let infomation=JSON.parse(data)
-               this.props.set_user_info(infomation)
-               if(infomation!="") this.setState({send:true})
+               let information=JSON.parse(data)
+               this.props.set_user_info(information)
+               if(information!="") this.setState({send:true})
            })
     }
     addInfo(e){

@@ -22,4 +22,4 @@ PRIMARY KEY(idEjercicio),
 FOREIGN KEY(idUsuario)
 REFERENCES Usuario(idUsuario) ON DELETE CASCADE);
 
-INSERT INTO Ejercicios (idUsuario,JSON) VALUES (1,"{'operation':'1','matrix':'{[[1,1],[1,1]]}','result':'{[[1,0],[0,1]]}'}");
+INSERT INTO Ejercicios (idUsuario,JSON) VALUES (1,'{"option":"0","matrix":[["1",0,0],[0,"1",0],["1",0,0]],"result":""}');
