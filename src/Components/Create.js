@@ -8,7 +8,7 @@ class Create extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            orden : "3",
+            orden:"3",
             option:"0",
             matrix:[[0,0,0],[0,0,0],[0,0,0]],
             result:"",
@@ -17,8 +17,6 @@ class Create extends React.Component{
     }
     save(e){
         e.preventDefault()
-        console.log(this.props.title)
-        //console.log(this.state)
         let info={
             option:this.state.option,
             matrix:this.state.matrix,
@@ -67,7 +65,13 @@ class Create extends React.Component{
         let orden=this.state.orden
         orden=isNaN(orden)?3:orden
         orden=orden>8?8:orden
-        let items=[]
+        let title=""
+        switch (this.state.option) {
+            case "1": title="Transpuesta"; break;
+            case "2": title="Determinante"; break;
+            case "3": title="Inversa"; break;
+            case "4": title="Adjunta"; break;
+        }
         if(this.state.update==true)
             return (<Redirect exact to="/CRUD/Info" />);
         return(
@@ -109,7 +113,7 @@ class Create extends React.Component{
                                 Resultado
                             </div>
                             <div className="asignar">
-                                <div>Transpuesta</div>
+                                <div>{title}</div>
                             </div>
                             <form onSubmit={this.save.bind(this)} method="get" className="form matrix">
                                 <div style={{pointerEvents:"none"}}>

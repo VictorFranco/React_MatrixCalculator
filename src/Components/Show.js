@@ -22,6 +22,13 @@ class Show extends React.Component{
                 json_=JSON.parse(exercise.JSON)
         let m1=json_.matrix
         let m2=json_.result
+        let title
+        switch (json_.option) {
+            case "1": title="Transpuesta"; break;
+            case "2": title="Determinante"; break;
+            case "3": title="Inversa"; break;
+            case "4": title="Adjunta"; break;
+        }
         return(
             <div>
                 <div className="content">
@@ -45,7 +52,7 @@ class Show extends React.Component{
                                 Resultado
                             </div>
                             <div className="asignar">
-                                <div>Transpuesta</div>
+                                <div>{title}</div>
                             </div>
                             <form method="get" className="form matrix">
                                 <div style={{pointerEvents:"none"}}>
