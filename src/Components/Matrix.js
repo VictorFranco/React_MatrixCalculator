@@ -8,7 +8,8 @@ class Matrix extends React.Component{
     transpose(A){
         let size=A.length
         let i, j;
-        let B=this.crearMatriz
+        let B=this.crearMatriz(size)
+        console.log(B)
         for (i = 0; i < size; i++)
             for (j = 0; j < size; j++)
                 B[i][j] = A[j][i];
@@ -20,8 +21,6 @@ class Matrix extends React.Component{
         )
         return matriz;
     }
-
-
     Cofactores(matriz,temp,q,size){
         let p = 0;
         let i =0;
