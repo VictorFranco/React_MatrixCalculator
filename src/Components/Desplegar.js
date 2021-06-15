@@ -25,8 +25,7 @@ class Desplegar extends Component{
     }
 
 
-  Cofactores(matriz,temp,q,size){
-    let p = 0;
+  Cofactores(matriz,temp,q,p,size){
     let i =0;
     let j =0;
     for(let fila =0; fila<size;fila++){
@@ -50,7 +49,7 @@ class Desplegar extends Component{
       
       let multiplicador = 1
         for(let f =0; f<size; f++){
-          this.Cofactores(matriz, temp, f, size)
+          this.Cofactores(matriz, temp, f,0, size)
            dete += parseInt(multiplicador) * parseInt(matriz[0][f])  * parseInt(this.Determinante(temp,size-1))
            multiplicador = -multiplicador
           
@@ -79,11 +78,45 @@ class Desplegar extends Component{
       adj[0][0] = 1;
       return
     }
+    for(let i = 0; i<size; i++){
+      for(let j = 0; j<size; j++){
+        this.Cofactores(matriz,temp,i,i,size)
+        signo = ((i+j)%2==0)?1:-1
 
+        adj[j][i] = (signo)*(parseInt(this.Determinante(temp,size-1)))
+      }
+    }
+    console.log(adj)
+    return adj;
   }
 
-  Inversa(){
+  CheckInvers(matriz,size){
+    let inv = this.crearMatriz(size)
+    let det = this.Determinante(matriz,size)
+    if(det == 0){
+      console.log("No se pudo")
+      return false;
+    }
+    let adj = this.crearMatriz(size)
+    this.Adjunta(matriz,size)
+    for(let i=0; i<size;i++){
+      for(let j=0; j<size; j++){
+        console.log("Entra")
+        inv[i][j] =  parseFloat(matriz[i][j])/parseFloat(det);
+        console.log("Aqui ya no entrá")
+        console.log(inv[i][j])
+      }
+    }
+    return inv;
+  }
 
+  Inversa(matriz, size){
+    let temp = this.crearMatriz(size)
+    let inv = this.CheckInvers(matriz,size)
+    if(inv != false){
+      return inv
+    }
+    return <h2>No tiene inversa</h2>
   }
 
 
@@ -125,7 +158,8 @@ class Desplegar extends Component{
                   <button type="submit">Resolver</button>
                 </form>
               {/* <h2>{this.Determinante(matriz, size)}</h2> */}
-              <p>{this.transpuesta(matriz,size)}</p>
+              <p>{this.Inversa(matriz,size)}</p>
+              
                 </div>
               );
          } else {
