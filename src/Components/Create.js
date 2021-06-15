@@ -3,6 +3,7 @@ import './Login.css';
 import './Create.css';
 import Matrix from './Matrix';
 import  { Redirect,Link } from 'react-router-dom'
+import axios from "axios";
 
 class Create extends React.Component{
     constructor(props){
@@ -26,11 +27,10 @@ class Create extends React.Component{
         let url='http://localhost:8080/CRUD/Create?'
             url+=`JSON=${JSON.stringify(info)}`
         console.log(url)
-        fetch(url)
-           .then(response => response.text())
+        axios.post(url)
+           .then(response => response.data)
            .then(data => {
-               let infomation=JSON.parse(data)
-               this.props.set_user_info(infomation)
+               this.props.set_user_info(data)
                this.setState({update:true})
            })
     }

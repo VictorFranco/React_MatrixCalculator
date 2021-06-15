@@ -2,6 +2,7 @@ import React from 'react';
 import './Card.css';
 import Field from './Field.js';
 import  { Redirect } from 'react-router-dom'
+import axios from "axios";
 
 class Card extends React.Component{
     constructor(props){
@@ -25,12 +26,11 @@ class Card extends React.Component{
         );
         url+=array.join("&")
         console.log(url)
-        fetch(url)
-           .then(response => response.text())
+        axios.post(url)
+           .then(response => response.data)
            .then(data => {
-               let information=JSON.parse(data)
-               this.props.set_user_info(information)
-               if(information!="") this.setState({send:true})
+               this.props.set_user_info(data)
+               if(data!="") this.setState({send:true})
            })
     }
     addInfo(e){

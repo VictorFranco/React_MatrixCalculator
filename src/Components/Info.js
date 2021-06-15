@@ -2,6 +2,7 @@ import React from 'react';
 import './Info.css';
 //import Field from './Field.js';
 import  { Redirect } from 'react-router-dom'
+import axios from "axios";
 
 class Info extends React.Component{
     constructor(props){
@@ -27,11 +28,10 @@ class Info extends React.Component{
     show_(id){
         let url="http://localhost:8080/CRUD/ShowInfo"
         console.log(url)
-        fetch(url)
-           .then(response => response.text())
+        axios.get(url)
+           .then(response => response.data)
            .then(data => {
-               let infomation=JSON.parse(data)
-               this.props.set_user_info(infomation)
+               this.props.set_user_info(data)
                this.props.set_excercise(id)
                this.setState({show:true})
            })
@@ -39,11 +39,10 @@ class Info extends React.Component{
     update_(id){
         let url="http://localhost:8080/CRUD/ShowInfo"
         console.log(url)
-        fetch(url)
-           .then(response => response.text())
+        axios.get(url)
+           .then(response => response.data)
            .then(data => {
-               let infomation=JSON.parse(data)
-               this.props.set_user_info(infomation)
+               this.props.set_user_info(data)
                this.props.set_excercise(id)
                this.setState({update:true})
            })
@@ -51,19 +50,18 @@ class Info extends React.Component{
     delete_(id){
         let url="http://localhost:8080/CRUD/Delete?exercise="+id
         console.log(url)
-        fetch(url)
-           .then(response => response.text())
+        axios.post(url)
+           .then(response => response.data)
            .then(data => {
-               let infomation=JSON.parse(data)
-               this.props.set_user_info(infomation)
+               this.props.set_user_info(data)
            })
     }
     logout_(e){
         e.preventDefault()
         let url="http://localhost:8080/CRUD/Logout"
         console.log(url)
-        fetch(url)
-           .then(response => response.text())
+        axios.post(url)
+           .then(response => response.data)
            .then(data => {
                console.log(data)
                this.setState({logout:true})

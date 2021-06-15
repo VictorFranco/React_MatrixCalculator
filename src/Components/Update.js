@@ -4,6 +4,7 @@ import './Update.css';
 import Card from './Card.js';
 import Create from './Create.js';
 import  { Redirect,Link } from 'react-router-dom'
+import axios from "axios";
 
 class Update extends Create{
     constructor(props){
@@ -39,11 +40,10 @@ class Update extends Create{
             url+=`exercise=${num}&`
             url+=`JSON=${JSON.stringify(info)}`
         console.log(url)
-        fetch(url)
-           .then(response => response.text())
+        axios.post(url)
+           .then(response => response.data)
            .then(data => {
-               let infomation=JSON.parse(data)
-               this.props.set_user_info(infomation)
+               this.props.set_user_info(data)
                this.setState({update:true})
            })
     }
