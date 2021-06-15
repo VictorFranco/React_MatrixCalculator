@@ -45,13 +45,13 @@ class Create extends React.Component{
     }
     transpose(){
         let new_matrix=new Matrix()
-        let result=new_matrix.transpose(this.state.matrix)
+        let result=new_matrix.transpuesta(this.state.matrix,this.state.matrix.length)
         console.log(result)
         this.setState({result:result})
     }
     determinante(){
         let new_matrix=new Matrix()
-        let result=new_matrix.Determiner(this.state.matrix,this.state.matrix.length)
+        let result=new_matrix.Determinante(this.state.matrix,this.state.matrix.length)
         console.log(result,this.state.matrix,this.state.matrix.length)
         this.setState({result:[[result]]})
     }
