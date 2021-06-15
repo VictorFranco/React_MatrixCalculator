@@ -12,7 +12,8 @@ class Create extends React.Component{
             option:"0",
             matrix:[[0,0,0],[0,0,0],[0,0,0]],
             result:"",
-            update:false
+            update:false,
+            action:"Crear"
         }
     }
     save(e){
@@ -35,11 +36,34 @@ class Create extends React.Component{
     }
     onSubmit(e){
         e.preventDefault()
-        if(this.state.option=="1") this.transpose()
+        switch (this.state.option) {
+            case "1": this.transpose(); break;
+            case "2": this.determinante(); break;
+            case "3": this.inversa(); break;
+            case "4": this.adjunta(); break;
+        }
     }
     transpose(){
         let new_matrix=new Matrix()
         let result=new_matrix.transpose(this.state.matrix)
+        console.log(result)
+        this.setState({result:result})
+    }
+    determinante(){
+        let new_matrix=new Matrix()
+        let result=new_matrix.Determiner(this.state.matrix,this.state.matrix.length)
+        console.log(result,this.state.matrix,this.state.matrix.length)
+        this.setState({result:[[result]]})
+    }
+    inversa(){
+        let new_matrix=new Matrix()
+        let result=new_matrix.Inversa(this.state.matrix,this.state.matrix.length)
+        console.log(result)
+        this.setState({result:result})
+    }
+    adjunta(){
+        let new_matrix=new Matrix()
+        let result=new_matrix.Adjunta(this.state.matrix,this.state.matrix.length)
         console.log(result)
         this.setState({result:result})
     }
@@ -77,7 +101,7 @@ class Create extends React.Component{
         return(
             <div>
                 <div className="content">
-                <div className="title">Crear</div>
+                <div className="title">{this.state.action}</div>
                     <div className="btn">
                         <Link className="button" to="/CRUD/Info">Return</Link>
                     </div>

@@ -42,7 +42,7 @@ class Show extends React.Component{
                                 Matriz Original
                             </div>
                             <form method="get" className="form matrix">
-                                <div>
+                                <div style={{pointerEvents:"none"}}>
                                     <Matrix content={m1} addElement={this.addElement.bind(this)}/>
                                 </div>
                             </form>

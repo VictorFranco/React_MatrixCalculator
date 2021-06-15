@@ -18,9 +18,11 @@ class Info extends React.Component{
     onSubmit_options(e){
         e.preventDefault()
         let id=e.target[0].value
-        if(this.state.option=="1") this.show_(id)
-        if(this.state.option=="2") this.update_(id)
-        if(this.state.option=="3") this.delete_(id)
+        switch (this.state.option) {
+            case "1": this.show_(id); break;
+            case "2": this.update_(id); break;
+            case "3": this.delete_(id); break;
+        }
     }
     show_(id){
         let url="http://localhost:8080/CRUD/ShowInfo"

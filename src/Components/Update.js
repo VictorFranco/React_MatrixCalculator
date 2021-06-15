@@ -21,7 +21,8 @@ class Update extends Create{
             option:json_.option,
             matrix:m1,
             result:m2,
-            update:false
+            update:false,
+            action:"Actualizar"
         }
     }
     save(e){
