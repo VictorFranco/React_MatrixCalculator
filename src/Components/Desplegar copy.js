@@ -186,10 +186,6 @@ class Desplegar extends Component{
 
   }
 
-  Inversa(){
-
-  }
-
 
  Itemdos(matriz) {
 

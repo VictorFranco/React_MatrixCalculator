@@ -22,21 +22,7 @@ class Desplegar extends Component{
     }
 
 
-  Cofactores(matriz,temp,q,size){
-    let p = 0;
-    let i =0;
-    let j =0;
-    for(let fila =0; fila<size;fila++){
-      for(let columna =0; columna<size; columna++){
-        if(fila != p && columna !=q){
-          temp[i][j++] = matriz[fila][columna];
-        } if(j == size-1){
-              j = 0;
-              i++;
-        }
-      }
-    }
-  }
+
 
   Determinante(matriz, size){
     let dete = 0;
@@ -55,29 +41,6 @@ class Desplegar extends Component{
     }return dete;
   }
 
-  transpuesta(matriz, size){
-    let temp = this.crearMatriz(size)
-    console.log(matriz)
-    console.log(temp)
-    for(let i = 0; i<size; i++){
-      for(let j = 0; j<size; j++){
-        temp[j][i] = matriz[i][j]
-      }
-    }
-    return temp;
-  }
-  crearMatriz(size){
-   
-      var matriz = new Array(size);
-    
-      for(let i = 0; i < size ; i++){
-        matriz[i]=new Array(size);
-        for(let j = 0; j< size ; j++){
-        }  
-    }
-     return matriz;
-    }
-
 
   Cofactores(matriz,temp,q,p,size){
     let i =0;
@@ -94,22 +57,7 @@ class Desplegar extends Component{
     }
   }
 
-  Determinante(matriz, size){
-    let dete = 0;
-    if(size == 1){
-      return matriz[0];
-    }
-      let temp = this.crearMatriz(size)
-      
-      let multiplicador = 1
-        for(let f =0; f<size; f++){
-          this.Cofactores(matriz, temp, f,0, size)
-           dete += parseInt(multiplicador) * parseInt(matriz[0][f])  * parseInt(this.Determinante(temp,size-1))
-           multiplicador = -multiplicador
-          
-        
-    }return dete;
-  }
+ 
 
   transpuesta(matriz, size){
     let temp = this.crearMatriz(size)
@@ -174,21 +122,9 @@ class Desplegar extends Component{
   }
 
 
-  Adjunta(matriz, size){
-    let adj = this.crearMatriz(size)
-    let temp = this.crearMatriz(size)
-    let signo = 1
+  
 
-    if(size == 1){
-      adj[0][0] = 1;
-      return
-    }
-
-  }
-
-  Inversa(){
-
-  }
+  
 
 
  Itemdos(matriz) {
