@@ -65,6 +65,8 @@ class Create extends React.Component{
     }
     onChange(e){
         let value=e.target.value
+        value=isNaN(value)?3:value
+        value=value>8?8:value
         let new_value=value||this.state.orden
         this.setState({orden : value})
         let m1=new Array(parseInt(new_value)).fill().map(
@@ -81,9 +83,6 @@ class Create extends React.Component{
         this.setState({option:e.target.value})
     }
     render(){
-        let orden=this.state.orden
-        orden=isNaN(orden)?3:orden
-        orden=orden>8?8:orden
         let title=""
         switch (this.state.option) {
             case "1": title="Transpuesta"; break
@@ -109,7 +108,7 @@ class Create extends React.Component{
                                 <div style={{marginRight:"4px"}}>Orden:</div>
                                 <input
                                     onChange={this.onChange.bind(this)}
-                                    value={orden} type="text"/>
+                                    value={this.state.orden} type="text"/>
                             </div>
                             <form onSubmit={this.onSubmit.bind(this)} method="get" className="form matrix">
                                 <div>
