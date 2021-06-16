@@ -16,10 +16,8 @@ class Card extends React.Component{
     onSubmit(e){
         e.preventDefault()
         console.log(this.props.title)
-        //console.log(this.state)
-        let dir=''
-        if(this.props.title=='Iniciar Sesion') dir='Login'
-        let url='http://localhost:8080/CRUD/'+dir+'?'
+        this.props.set_url(window.location.href)
+        let url=new URL('Login?',window.location.href)
         let array=[]
         Object.entries(this.state).forEach(
             ([key, value]) => array.push(key+"="+value)
@@ -40,7 +38,7 @@ class Card extends React.Component{
     }
     render(){
         if(this.state.send==true)
-            return (<Redirect to="/CRUD/Info" />);
+            return (<Redirect to="/Info" />);
         return(<div className="card">
             <div className="card-title">
                 {this.props.title}

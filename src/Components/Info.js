@@ -26,7 +26,7 @@ class Info extends React.Component{
         }
     }
     show_(id){
-        let url="http://localhost:8080/CRUD/ShowInfo"
+        let url=new URL('ShowInfo',this.props.base_url)
         console.log(url)
         axios.get(url)
            .then(response => response.data)
@@ -37,7 +37,7 @@ class Info extends React.Component{
            })
     }
     update_(id){
-        let url="http://localhost:8080/CRUD/ShowInfo"
+        let url=new URL('ShowInfo',this.props.base_url)
         console.log(url)
         axios.get(url)
            .then(response => response.data)
@@ -50,7 +50,8 @@ class Info extends React.Component{
     delete_(id){
         let resp=confirm("¿Estas seguro de borrar este ejercicio?")
         if(!resp) return false
-        let url="http://localhost:8080/CRUD/Delete?exercise="+id
+        let url=new URL('Delete',this.props.base_url)
+        url+="?exercise="+id
         console.log(url)
         axios.post(url)
            .then(response => response.data)
@@ -60,7 +61,7 @@ class Info extends React.Component{
     }
     logout_(e){
         e.preventDefault()
-        let url="http://localhost:8080/CRUD/Logout"
+        let url=new URL('Logout',this.props.base_url)
         console.log(url)
         axios.post(url)
            .then(response => response.data)
@@ -74,13 +75,13 @@ class Info extends React.Component{
     }
     render(){
         if(this.state.create==true)
-            return (<Redirect exact to="/CRUD/Create_Exercise" />);
+            return (<Redirect exact to="/Create_Exercise" />);
         if(this.state.show==true)
-            return (<Redirect exact to="/CRUD/Show_Exercise" />);
+            return (<Redirect exact to="/Show_Exercise" />);
         if(this.state.update==true)
-            return (<Redirect exact to="/CRUD/Update_Exercise" />);
+            return (<Redirect exact to="/Update_Exercise" />);
         if(this.state.logout==true)
-            return (<Redirect exact to="/CRUD/" />);
+            return (<Redirect exact to="/" />);
         return(
             <div className="contenido">
                 <div className="title">

@@ -16,6 +16,7 @@ class Login extends React.Component{
                     <Card
                         title="Iniciar Sesion"
                         campos={campos_iniciar}
+                        set_url={this.props.set_url}
                         set_user_info={this.props.set_user_info}/>
                 </div>
                 </div>

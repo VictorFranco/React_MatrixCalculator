@@ -36,7 +36,7 @@ class Update extends Create{
             result:this.state.result
         }
         let num=this.props.num_excercise
-        let url='http://localhost:8080/CRUD/Update?'
+        let url=new URL('Update?',this.props.base_url)
             url+=`exercise=${num}&`
             url+=`JSON=${JSON.stringify(info)}`
         console.log(url)

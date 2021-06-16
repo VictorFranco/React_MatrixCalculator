@@ -21,24 +21,30 @@ class App extends React.Component {
     set_excercise(num){
         this.setState({num_excercise:num})
     }
+    set_url(url){
+        this.setState({base_url:url})
+    }
     render(){
         return(
-            <Router>
-                <Route exact path='/CRUD/' render={
+            <Router basename='/FinalProject/'>
+                <Route exact path='/' render={
                     ()=> <Login
+                        set_url={this.set_url.bind(this)}
                         set_user_info={this.set_user_info.bind(this)} />
                 }/>
-                <Route exact path='/CRUD/Info/' render={
+                <Route exact path='/Info/' render={
                     ()=><Info
                         user={this.state.user}
+                        base_url={this.state.base_url}
                         set_excercise={this.set_excercise.bind(this)}
                         set_user_info={this.set_user_info.bind(this)} />
                 }/>
-                <Route exact path='/CRUD/Create_Exercise/' render={
+                <Route exact path='/Create_Exercise/' render={
                     ()=><Create
+                        base_url={this.state.base_url}
                         set_user_info={this.set_user_info.bind(this)} />
                 }/>
-                <Route exact path='/CRUD/Show_Exercise/' render={
+                <Route exact path='/Show_Exercise/' render={
                     ()=><Show
                         num_excercise={this.state.num_excercise}
                         user={this.state.user} />
@@ -49,9 +55,10 @@ class App extends React.Component {
                 <Route exact path='/Desplegar/' render={
                     ()=><Desplegar />
                 }/>
-                <Route exact path='/CRUD/Update_Exercise/' render={
+                <Route exact path='/Update_Exercise/' render={
                     ()=><Update
                         user={this.state.user}
+                        base_url={this.state.base_url}
                         num_excercise={this.state.num_excercise}
                         set_user_info={this.set_user_info.bind(this)} />
                 }/>

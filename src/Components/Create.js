@@ -24,7 +24,7 @@ class Create extends React.Component{
             matrix:this.state.matrix,
             result:this.state.result
         }
-        let url='http://localhost:8080/CRUD/Create?'
+        let url=new URL('Create?',this.props.base_url)
             url+=`JSON=${JSON.stringify(info)}`
         console.log(url)
         axios.post(url)
@@ -99,13 +99,13 @@ class Create extends React.Component{
             case "4": title="Adjunta"; break;
         }
         if(this.state.update==true)
-            return (<Redirect exact to="/CRUD/Info" />);
+            return (<Redirect exact to="/Info" />);
         return(
             <div>
                 <div className="content">
                 <div className="title">{this.state.action}</div>
                     <div className="btn">
-                        <Link className="button" to="/CRUD/Info">Return</Link>
+                        <Link className="button" to="/Info">Return</Link>
                     </div>
                     <div className="cards">
                         <div className="card">

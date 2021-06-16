@@ -34,7 +34,7 @@ class Show extends React.Component{
                 <div className="content">
                 <div className="title">Consultar</div>
                     <div className="btn">
-                        <Link className="button" to="/CRUD/Info">Return</Link>
+                        <Link className="button" to="/Info">Return</Link>
                     </div>
                     <div className="cards">
                         <div className="card">
