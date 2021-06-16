@@ -17,7 +17,7 @@ SELECT * FROM Usuario;
 create table Ejercicios(
 idEjercicio INT NOT NULL AUTO_INCREMENT,
 idUsuario INT NOT NULL,
-JSON VARCHAR(200) NOT NULL,
+JSON VARCHAR(1000) NOT NULL,
 PRIMARY KEY(idEjercicio),
 FOREIGN KEY(idUsuario)
 REFERENCES Usuario(idUsuario) ON DELETE CASCADE);
