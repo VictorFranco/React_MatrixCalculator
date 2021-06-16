@@ -1,6 +1,4 @@
-import React from 'react';
-import './Login.css';
-import './Create.css';
+import React from 'react'
 import Matrix from './Matrix';
 import  { Redirect,Link } from 'react-router-dom'
 
@@ -9,9 +7,8 @@ class Show extends React.Component{
         super(props)
     }
     addElement(e,x,y){
-        let m1=this.state.matrix;
+        let m1=this.state.matrix
         m1[y][x]=e.target.value
-        console.log(m1)
         this.setState({matrix:m1})
     }
     render(){
@@ -22,12 +19,12 @@ class Show extends React.Component{
                 json_=JSON.parse(exercise.JSON)
         let m1=json_.matrix
         let m2=json_.result
-        let title
+        let title=""
         switch (json_.option) {
-            case "1": title="Transpuesta"; break;
-            case "2": title="Determinante"; break;
-            case "3": title="Inversa"; break;
-            case "4": title="Adjunta"; break;
+            case "1": title="Transpuesta"; break
+            case "2": title="Determinante"; break
+            case "3": title="Inversa"; break
+            case "4": title="Adjunta"; break
         }
         return(
             <div>

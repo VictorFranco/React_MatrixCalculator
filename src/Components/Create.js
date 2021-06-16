@@ -1,9 +1,8 @@
-import React from 'react';
-import './Login.css';
-import './Create.css';
-import Matrix from './Matrix';
+import React from 'react'
+import './Create.css'
+import Matrix from './Matrix'
 import  { Redirect,Link } from 'react-router-dom'
-import axios from "axios";
+import axios from "axios"
 
 class Create extends React.Component{
     constructor(props){
@@ -26,7 +25,6 @@ class Create extends React.Component{
         }
         let url=new URL('Create?',this.props.base_url)
             url+=`JSON=${JSON.stringify(info)}`
-        console.log(url)
         axios.post(url)
            .then(response => response.data)
            .then(data => {
@@ -37,28 +35,25 @@ class Create extends React.Component{
     onSubmit(e){
         e.preventDefault()
         switch (this.state.option) {
-            case "1": this.transpose(); break;
-            case "2": this.determinante(); break;
-            case "3": this.inversa(); break;
-            case "4": this.adjunta(); break;
+            case "1": this.transpose(); break
+            case "2": this.determinante(); break
+            case "3": this.inversa(); break
+            case "4": this.adjunta(); break
         }
     }
     transpose(){
         let new_matrix=new Matrix()
         let result=new_matrix.Transpuesta(this.state.matrix,this.state.matrix.length)
-        console.log(result)
         this.setState({result:result})
     }
     determinante(){
         let new_matrix=new Matrix()
         let result=new_matrix.Determinante(this.state.matrix,this.state.matrix.length)
-        console.log(result)
         this.setState({result:[[result]]})
     }
     inversa(){
         let new_matrix=new Matrix()
         let result=new_matrix.Inversa(this.state.matrix,this.state.matrix.length)
-        console.log(result)
         if(result===false)
             alert("El determinante es 0, entonces la matriz no es inversible")
         this.setState({result:result})
@@ -66,7 +61,6 @@ class Create extends React.Component{
     adjunta(){
         let new_matrix=new Matrix()
         let result=new_matrix.Adjunta(this.state.matrix,this.state.matrix.length)
-        console.log(result)
         this.setState({result:result})
     }
     onChange(e){
@@ -81,7 +75,6 @@ class Create extends React.Component{
     addElement(e,x,y){
         let m1=this.state.matrix
         m1[y][x]=e.target.value
-        console.log(m1)
         this.setState({matrix:m1})
     }
     onClick(e){
@@ -93,10 +86,10 @@ class Create extends React.Component{
         orden=orden>8?8:orden
         let title=""
         switch (this.state.option) {
-            case "1": title="Transpuesta"; break;
-            case "2": title="Determinante"; break;
-            case "3": title="Inversa"; break;
-            case "4": title="Adjunta"; break;
+            case "1": title="Transpuesta"; break
+            case "2": title="Determinante"; break
+            case "3": title="Inversa"; break
+            case "4": title="Adjunta"; break
         }
         if(this.state.update==true)
             return (<Redirect exact to="/Info" />);

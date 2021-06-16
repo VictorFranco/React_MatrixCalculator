@@ -1,7 +1,5 @@
-import React from 'react';
-import './Login.css';
-import './Create.css';
-import Cell from './Cell';
+import React from 'react'
+import Cell from './Cell'
 
 class Matrix extends React.Component{
     crearMatriz(size){

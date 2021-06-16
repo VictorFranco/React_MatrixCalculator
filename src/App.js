@@ -5,8 +5,6 @@ import Info from './Components/Info';
 import Create from './Components/Create';
 import Show from './Components/Show';
 import Update from './Components/Update';
-import Matriz from './Components/Matriz';
-import Desplegar from './Components/Desplegar';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
 class App extends React.Component {
@@ -16,7 +14,6 @@ class App extends React.Component {
     }
     set_user_info(inf){
         this.setState({user:inf})
-        console.log(this.state.user)
     }
     set_excercise(num){
         this.setState({num_excercise:num})
@@ -48,12 +45,6 @@ class App extends React.Component {
                     ()=><Show
                         num_excercise={this.state.num_excercise}
                         user={this.state.user} />
-                }/>
-                <Route exact path='/Matriz/' render={
-                    ()=><Matriz />
-                }/>
-                <Route exact path='/Desplegar/' render={
-                    ()=><Desplegar />
                 }/>
                 <Route exact path='/Update_Exercise/' render={
                     ()=><Update
