@@ -4,111 +4,83 @@ import './Create.css';
 import Cell from './Cell';
 
 class Matrix extends React.Component{
-    //Matriz traspuesta
     crearMatriz(size){
         let matriz=Array(parseInt(size)).fill().map(
             ()=>Array(parseInt(size)).fill(0)
         )
-        return matriz;
+        return matriz
     }
 
-  Cofactores(matriz,temp,q,p,size){
-    let i =0;
-    let j =0;
-    for(let fila =0; fila<size;fila++){
-      for(let columna =0; columna<size; columna++){
-        if(fila != p && columna !=q){
-          temp[i][j++] = matriz[fila][columna];
-        } if(j == size-1){
-              j = 0;
-              i++;
-        }
-      }
+    Cofactores(matriz,temp,q,p,size){
+        let i =0
+        let j =0
+        for(let fila =0; fila<size;fila++)
+            for(let columna =0; columna<size; columna++){
+                if(fila != p && columna !=q)
+                    temp[i][j++] = matriz[fila][columna]
+                if(j == size-1){
+                    j = 0
+                    i++
+                }
+            }
     }
-  }
 
-  Determinante(matriz, size){
-    let dete = 0;
-    if(size == 1){
-      return matriz[0];
-    }
-      let temp = this.crearMatriz(size)
-      
-      let multiplicador = 1
+    Determinante(matriz, size){
+        let dete = 0
+        if(size == 1) return matriz[0]
+        let temp = this.crearMatriz(size)
+        let multiplicador = 1
         for(let f =0; f<size; f++){
-          this.Cofactores(matriz, temp, f,0, size)
-           dete += parseInt(multiplicador) * parseInt(matriz[0][f])  * parseInt(this.Determinante(temp,size-1))
-           multiplicador = -multiplicador
-          
-        
-    }return dete;
-  }
-
-  transpuesta(matriz, size){
-    let temp = this.crearMatriz(size)
-    console.log(matriz)
-    console.log(temp)
-    for(let i = 0; i<size; i++){
-      for(let j = 0; j<size; j++){
-        temp[j][i] = matriz[i][j]
-      }
+            this.Cofactores(matriz, temp, f,0, size)
+            dete += parseInt(multiplicador) * parseInt(matriz[0][f])  * parseInt(this.Determinante(temp,size-1))
+            multiplicador = -multiplicador
+        }
+        return dete
     }
-    return temp;
-  }
 
-  Adjunta(matriz, size){
-    let adj = this.crearMatriz(size)
-    let temp = this.crearMatriz(size)
-    let signo = 1 
-
-    if(size == 1){
-      adj[0][0] = 1;
-      return
+    Transpuesta(matriz, size){
+        let temp = this.crearMatriz(size)
+        for(let i = 0; i<size; i++)
+            for(let j = 0; j<size; j++)
+                temp[j][i] = matriz[i][j]
+        return temp
     }
-    for(let i = 0; i<size; i++){
-      for(let j = 0; j<size; j++){
-        this.Cofactores(matriz,temp,i,i,size)
-        signo = ((i+j)%2==0)?1:-1
 
-        adj[j][i] = (signo)*(parseInt(this.Determinante(temp,size-1)))
-      }
+    Adjunta(matriz, size){
+        let adj = this.crearMatriz(size)
+        let temp = this.crearMatriz(size)
+        let signo = 1
+        if(size == 1){
+            adj[0][0] = 1
+            return
+        }
+        for(let i = 0; i<size; i++)
+            for(let j = 0; j<size; j++){
+                this.Cofactores(matriz,temp,i,i,size)
+                signo = ((i+j)%2==0)?1:-1
+                adj[j][i] = (signo)*(parseInt(this.Determinante(temp,size-1)))
+          }
+        return adj
     }
-    console.log(adj)
-    return adj;
-  }
 
-  CheckInvers(matriz,size){
-    let inv = this.crearMatriz(size)
-    let det = this.Determinante(matriz,size)
-    if(det == 0){
-      console.log("No se pudo")
-      return false;
+    CheckInvers(matriz,size){
+        let inv = this.crearMatriz(size)
+        let det = this.Determinante(matriz,size)
+        if(det == 0) return false
+        let adj = this.crearMatriz(size)
+        this.Adjunta(matriz,size)
+        for(let i=0; i<size;i++)
+            for(let j=0; j<size; j++){
+                inv[i][j] =  parseFloat(matriz[i][j])/parseFloat(det)
+            }
+        return inv
     }
-    let adj = this.crearMatriz(size)
-    this.Adjunta(matriz,size)
-    for(let i=0; i<size;i++){
-      for(let j=0; j<size; j++){
-        console.log("Entra")
-        inv[i][j] =  parseFloat(matriz[i][j])/parseFloat(det);
-        console.log("Aqui ya no entrá")
-        console.log(inv[i][j])
-      }
+
+    Inversa(matriz, size){
+        let temp = this.crearMatriz(size)
+        let inv = this.CheckInvers(matriz,size)
+        return inv
     }
-    return inv;
-  }
-
-  Inversa(matriz, size){
-    let temp = this.crearMatriz(size)
-    let inv = this.CheckInvers(matriz,size)
-    if(inv != false){
-      return inv
-    }
-    return <h2>No tiene inversa</h2>
-  }
-
-
-
-
 
     render(){
         let size=this.props.content.length

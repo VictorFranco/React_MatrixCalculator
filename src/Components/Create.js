@@ -45,20 +45,22 @@ class Create extends React.Component{
     }
     transpose(){
         let new_matrix=new Matrix()
-        let result=new_matrix.transpuesta(this.state.matrix,this.state.matrix.length)
+        let result=new_matrix.Transpuesta(this.state.matrix,this.state.matrix.length)
         console.log(result)
         this.setState({result:result})
     }
     determinante(){
         let new_matrix=new Matrix()
         let result=new_matrix.Determinante(this.state.matrix,this.state.matrix.length)
-        console.log(result,this.state.matrix,this.state.matrix.length)
+        console.log(result)
         this.setState({result:[[result]]})
     }
     inversa(){
         let new_matrix=new Matrix()
         let result=new_matrix.Inversa(this.state.matrix,this.state.matrix.length)
         console.log(result)
+        if(result===false)
+            alert("El determinante es 0, entonces la matriz no es inversible")
         this.setState({result:result})
     }
     adjunta(){
@@ -77,7 +79,7 @@ class Create extends React.Component{
         this.setState({matrix:m1})
     }
     addElement(e,x,y){
-        let m1=this.state.matrix;
+        let m1=this.state.matrix
         m1[y][x]=e.target.value
         console.log(m1)
         this.setState({matrix:m1})
