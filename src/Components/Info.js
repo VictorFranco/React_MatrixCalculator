@@ -1,16 +1,12 @@
-import React from 'react';
-import './Info.css';
-//import Field from './Field.js';
+import React from 'react'
+import './Info.css'
 import  { Redirect } from 'react-router-dom'
-import axios from "axios";
+import axios from "axios"
 
 class Info extends React.Component{
     constructor(props){
         super(props)
         this.state={}
-        this.setState({create:false})
-        this.setState({show:false})
-        this.setState({update:false})
     }
     onSubmit(e){
         e.preventDefault()
@@ -20,14 +16,13 @@ class Info extends React.Component{
         e.preventDefault()
         let id=e.target[0].value
         switch (this.state.option) {
-            case "1": this.show_(id); break;
-            case "2": this.update_(id); break;
-            case "3": this.delete_(id); break;
+            case "1": this.show_(id); break
+            case "2": this.update_(id); break
+            case "3": this.delete_(id); break
         }
     }
     show_(id){
         let url=new URL('ShowInfo',this.props.base_url)
-        console.log(url)
         axios.get(url)
            .then(response => response.data)
            .then(data => {
@@ -38,7 +33,6 @@ class Info extends React.Component{
     }
     update_(id){
         let url=new URL('ShowInfo',this.props.base_url)
-        console.log(url)
         axios.get(url)
            .then(response => response.data)
            .then(data => {
@@ -52,7 +46,6 @@ class Info extends React.Component{
         if(!resp) return false
         let url=new URL('Delete',this.props.base_url)
         url+="?exercise="+id
-        console.log(url)
         axios.post(url)
            .then(response => response.data)
            .then(data => {
@@ -62,11 +55,9 @@ class Info extends React.Component{
     logout_(e){
         e.preventDefault()
         let url=new URL('Logout',this.props.base_url)
-        console.log(url)
         axios.post(url)
            .then(response => response.data)
            .then(data => {
-               console.log(data)
                this.setState({logout:true})
            })
     }

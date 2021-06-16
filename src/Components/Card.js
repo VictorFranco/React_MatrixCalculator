@@ -1,8 +1,8 @@
-import React from 'react';
-import './Card.css';
-import Field from './Field.js';
+import React from 'react'
+import './Card.css'
+import Field from './Field.js'
 import  { Redirect } from 'react-router-dom'
-import axios from "axios";
+import axios from "axios"
 
 class Card extends React.Component{
     constructor(props){
@@ -15,7 +15,6 @@ class Card extends React.Component{
     }
     onSubmit(e){
         e.preventDefault()
-        console.log(this.props.title)
         this.props.set_url(window.location.href)
         let url=new URL('Login?',window.location.href)
         let array=[]
@@ -23,7 +22,6 @@ class Card extends React.Component{
             ([key, value]) => array.push(key+"="+value)
         );
         url+=array.join("&")
-        console.log(url)
         axios.post(url)
            .then(response => response.data)
            .then(data => {

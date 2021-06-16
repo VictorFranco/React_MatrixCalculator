@@ -1,10 +1,8 @@
-import React from 'react';
-import './Card.css';
-import './Update.css';
-import Card from './Card.js';
-import Create from './Create.js';
+import React from 'react'
+import './Update.css'
+import Create from './Create.js'
 import  { Redirect,Link } from 'react-router-dom'
-import axios from "axios";
+import axios from "axios"
 
 class Update extends Create{
     constructor(props){
@@ -28,8 +26,6 @@ class Update extends Create{
     }
     save(e){
         e.preventDefault()
-        console.log(this.props.title)
-        //console.log(this.state)
         let info={
             option:this.state.option,
             matrix:this.state.matrix,
@@ -39,7 +35,6 @@ class Update extends Create{
         let url=new URL('Update?',this.props.base_url)
             url+=`exercise=${num}&`
             url+=`JSON=${JSON.stringify(info)}`
-        console.log(url)
         axios.post(url)
            .then(response => response.data)
            .then(data => {

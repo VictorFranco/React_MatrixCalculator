@@ -1,6 +1,6 @@
-import React from 'react';
-import './Login.css';
-import Card from './Card';
+import React from 'react'
+import './Login.css'
+import Card from './Card'
 
 class Login extends React.Component{
     render(){
