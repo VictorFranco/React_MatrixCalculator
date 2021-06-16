@@ -48,6 +48,8 @@ class Info extends React.Component{
            })
     }
     delete_(id){
+        let resp=confirm("¿Estas seguro de borrar este ejercicio?")
+        if(!resp) return false
         let url="http://localhost:8080/CRUD/Delete?exercise="+id
         console.log(url)
         axios.post(url)
