@@ -86,8 +86,8 @@ class Matrix extends React.Component{
         let size=this.props.content.length
         let inputs=[]
         let style_={
-            width:40*size+"px",
-            gridAutoRows:"40px",
+            width:50*size+"px",
+            gridAutoRows:"50px",
             gridTemplateColumns:"repeat("+size+",1fr)",
             alignContent:"center",
             placeItems:"center",
