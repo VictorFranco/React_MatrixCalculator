@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Matrix extends React.Component{
+class Cell extends React.Component{
     onChange(e){
         this.props.addElement(e,this.props.x,this.props.y)
     }
@@ -13,4 +13,4 @@ class Matrix extends React.Component{
     }
 }
 
-export default Matrix;
+export default Cell;
