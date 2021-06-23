@@ -57,7 +57,7 @@ class Matrix extends React.Component{
                 this.Cofactores(matriz,temp,i,i,size)
                 signo = ((i+j)%2==0)?1:-1
                 adj[j][i] = (signo)*(parseInt(this.Determinante(temp,size-1)))
-          }
+            }
         return adj
     }
 

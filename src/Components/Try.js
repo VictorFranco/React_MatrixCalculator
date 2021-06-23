@@ -13,7 +13,8 @@ class Try extends Show{
             title:title,
             matrix:m1,
             result:m2,
-            m_user:m_user
+            m_user:m_user,
+            color:"#014b88"
         }
     }
     addElement(e,x,y){
@@ -23,8 +24,18 @@ class Try extends Show{
     }
     onSubmit(e){
         e.preventDefault()
+        for(let i=0;i<this.state.result.length;i++)
+            for(let j=0;i<this.state.result.length;i++)
+                if(this.state.matrix[i][j]!=this.state.m_user[i][j]){
+                    alert("No es correcto ese resultado")
+                    this.setState({color:"#880101"})
+                    return -1
+                }
+        alert("Bien hecho!")
+        this.setState({color:"#076116"})
     }
     render(){
+        let color=this.state.color
         return(
             <div>
                 <div className="content">
@@ -44,7 +55,7 @@ class Try extends Show{
                             </form>
                         </div>
                         <div className="card">
-                            <div className="card-title">
+                            <div style={{background:color}} className="card-title">
                                 Problema
                             </div>
                             <div className="asignar">
