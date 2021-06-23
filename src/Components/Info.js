@@ -108,6 +108,8 @@ class Info extends React.Component{
                                 onClick={this.onClick.bind(this)}>Modificar ejercicio</button>
                             <button name='send' value="3" type='submit' className='button'
                                 onClick={this.onClick.bind(this)}>Eliminar ejercicio</button>
+                            <button name='send' value="4" type='submit' className='button'
+                                onClick={this.onClick.bind(this)}>Probar ejercicio</button>
                         </form>
                         </div>
                     )})}
