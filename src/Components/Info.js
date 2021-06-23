@@ -19,6 +19,7 @@ class Info extends React.Component{
             case "1": this.show_(id); break
             case "2": this.update_(id); break
             case "3": this.delete_(id); break
+            case "4": this.try_(id); break
         }
     }
     show_(id){
@@ -39,6 +40,16 @@ class Info extends React.Component{
                this.props.set_user_info(data)
                this.props.set_excercise(id)
                this.setState({update:true})
+           })
+    }
+    try_(id){
+        let url=new URL('ShowInfo',this.props.base_url)
+        axios.get(url)
+           .then(response => response.data)
+           .then(data => {
+               this.props.set_user_info(data)
+               this.props.set_excercise(id)
+               this.setState({try_:true})
            })
     }
     delete_(id){
@@ -71,6 +82,8 @@ class Info extends React.Component{
             return (<Redirect exact to="/Show_Exercise" />);
         if(this.state.update==true)
             return (<Redirect exact to="/Update_Exercise" />);
+        if(this.state.try_==true)
+            return (<Redirect exact to="/Try_Exercise" />);
         if(this.state.logout==true)
             return (<Redirect exact to="/" />);
         return(

@@ -53,6 +53,11 @@ class App extends React.Component {
                         num_excercise={this.state.num_excercise}
                         set_user_info={this.set_user_info.bind(this)} />
                 }/>
+                <Route exact path='/Try_Exercise/' render={
+                    ()=> <Login
+                        set_url={this.set_url.bind(this)}
+                        set_user_info={this.set_user_info.bind(this)} />
+                }/>
             </Router>
         );
     }
