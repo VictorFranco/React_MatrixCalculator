@@ -4,6 +4,7 @@ import Login from './Components/Login';
 import Info from './Components/Info';
 import Create from './Components/Create';
 import Show from './Components/Show';
+import Try from './Components/Try';
 import Update from './Components/Update';
 import {BrowserRouter as Router,Route,Link} from "react-router-dom";
 
@@ -25,7 +26,7 @@ class App extends React.Component {
         return(
             <Router basename='/FinalProject/'>
                 <Route exact path='/' render={
-                    ()=> <Login
+                    ()=><Login
                         set_url={this.set_url.bind(this)}
                         set_user_info={this.set_user_info.bind(this)} />
                 }/>
@@ -54,9 +55,9 @@ class App extends React.Component {
                         set_user_info={this.set_user_info.bind(this)} />
                 }/>
                 <Route exact path='/Try_Exercise/' render={
-                    ()=> <Login
-                        set_url={this.set_url.bind(this)}
-                        set_user_info={this.set_user_info.bind(this)} />
+                    ()=><Try
+                        num_excercise={this.state.num_excercise}
+                        user={this.state.user} />
                 }/>
             </Router>
         );
