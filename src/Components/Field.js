@@ -6,7 +6,7 @@ class Field extends React.Component{
         return(
             <div className="field">
                 <div>{this.props.name}: </div>
-                <input type="text"
+                <input type={this.props.name=="Password"?"password":"text"}
                     onChange={this.props.addInfo}
                     name={this.props.name}
                     value={this.props.state}/>

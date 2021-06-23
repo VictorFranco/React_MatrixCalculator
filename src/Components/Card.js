@@ -27,6 +27,7 @@ class Card extends React.Component{
            .then(data => {
                this.props.set_user_info(data)
                if(data!="") this.setState({send:true})
+               else alert("Usuario no registrado")
            })
     }
     addInfo(e){
