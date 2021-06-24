@@ -31,8 +31,8 @@ class Try extends Show{
     onSubmit(e){
         e.preventDefault()
         for(let i=0;i<this.state.result.length;i++)
-            for(let j=0;i<this.state.result.length;i++)
-                if(this.state.matrix[i][j]!=this.state.m_user[i][j]){
+            for(let j=0;j<this.state.result.length;j++)
+                if(this.state.result[i][j]!=this.state.m_user[i][j]){
                     this.setState({color:"#880101"})
                     alert("No es correcto ese resultado")
                     return -1
@@ -53,7 +53,7 @@ class Try extends Show{
         }
     }
     time_format(sec){
-        var date = new Date(0);
+        let date = new Date(0);
         date.setSeconds(sec);
         return date.toISOString().substr(14,5);
     }
