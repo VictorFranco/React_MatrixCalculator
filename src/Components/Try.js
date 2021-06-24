@@ -1,6 +1,7 @@
 import React from 'react'
-import Matrix from './Matrix';
-import Show from './Show';
+import './Try.css'
+import Matrix from './Matrix'
+import Show from './Show'
 import  { Redirect,Link } from 'react-router-dom'
 
 class Try extends Show{
@@ -14,8 +15,13 @@ class Try extends Show{
             matrix:m1,
             result:m2,
             m_user:m_user,
-            color:"#014b88"
+            color:"#014b88",
+            range_time:120
         }
+        this.timer=0;
+    }
+    componentDidMount(){
+        this.start_countdown.bind(this)()
     }
     addElement(e,x,y){
         let m1=this.state.m_user
@@ -27,15 +33,35 @@ class Try extends Show{
         for(let i=0;i<this.state.result.length;i++)
             for(let j=0;i<this.state.result.length;i++)
                 if(this.state.matrix[i][j]!=this.state.m_user[i][j]){
-                    alert("No es correcto ese resultado")
                     this.setState({color:"#880101"})
+                    alert("No es correcto ese resultado")
                     return -1
                 }
-        alert("Bien hecho!")
+        clearInterval(this.timer)
         this.setState({color:"#076116"})
+        alert("Bien hecho!")
+    }
+    start_countdown(){
+        this.timer=setInterval(this.countdown.bind(this),1000)
+    }
+    countdown(){
+        this.setState({range_time:this.state.range_time-1})
+        if(this.state.range_time<=0){
+            clearInterval(this.timer)
+            alert("Se acabo el tiempo")
+            this.setState({timeover:true})
+        }
+    }
+    time_format(sec){
+        var date = new Date(0);
+        date.setSeconds(sec);
+        return date.toISOString().substr(14,5);
     }
     render(){
         let color=this.state.color
+        let time=this.time_format(this.state.range_time)
+        if(this.state.timeover==true)
+            return (<Redirect exact to="/Info" />);
         return(
             <div>
                 <div className="content">
@@ -43,7 +69,7 @@ class Try extends Show{
                     <div className="btn">
                         <Link className="button" to="/Info">Return</Link>
                     </div>
-                    <div className="cards">
+                    <div className="try">
                         <div className="card">
                             <div className="card-title">
                                 Matriz Original
@@ -53,6 +79,9 @@ class Try extends Show{
                                     <Matrix content={this.state.matrix} />
                                 </div>
                             </form>
+                        </div>
+                        <div className="space_clock">
+                            <div className="clock">{time}</div>
                         </div>
                         <div className="card">
                             <div style={{background:color}} className="card-title">

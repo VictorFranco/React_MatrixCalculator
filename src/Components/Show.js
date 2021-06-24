@@ -1,5 +1,5 @@
 import React from 'react'
-import Matrix from './Matrix';
+import Matrix from './Matrix'
 import  { Redirect,Link } from 'react-router-dom'
 
 class Show extends React.Component{
