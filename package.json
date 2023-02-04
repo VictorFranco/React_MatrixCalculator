@@ -2,11 +2,14 @@
   "name": "adoofinal",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://victorfranco.github.io/React_MatrixCalculator/",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
     "start": "webpack serve --port 3000",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -19,6 +22,7 @@
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.1.3",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.3.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.26.0",
