@@ -11,3 +11,7 @@ It's a React application and compute 4 matrix operations:
 ## Screenshots
 ![](https://i.imgur.com/tDd8n2S.jpg "Matrix calculator")
 ![](https://i.imgur.com/quKqtrm.jpg "Result")
+
+## LICENSE
+
+[MIT](LICENSE "LICENSE")
